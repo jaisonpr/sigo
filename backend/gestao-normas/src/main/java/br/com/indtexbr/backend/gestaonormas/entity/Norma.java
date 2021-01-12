@@ -1,5 +1,8 @@
 package br.com.indtexbr.backend.gestaonormas.entity;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,4 +24,21 @@ public class Norma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "titulo")
+    private String titulo;
+
+    @Column(name = "descricao")
+    private String descricao;
+    
+    @Column(name = "codigo")
+    private String codigo;
+
+    @Column(name = "categoria")
+    private String categoria;
+ 
+    @Column(name = "data_inclusao")    
+    private Date dataInclusao;
+    
+    @Column(name = "data_publicacao")    
+    private Date dataPublicacao;
 }
