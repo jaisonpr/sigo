@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "787734f8-775a-4ed3-8c83-76b3b8b8676e",
+		"name": "SIGO-Normas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Adicionar Norma",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\":\"Teste\",\n\t\"descricao\":\"Teste descricao\",\n    \"codigo\":\"142\",\n\t\"categoria\":\"ABNT\",\n\t\"data_inclusao\":\"2021-01-12\",\n\t\"data_publicacao\":\"2019-11-02\"    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/gestao-normas/v1/normas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"gestao-normas",
+						"v1",
+						"normas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Normas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/gestao-normas/v1/normas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"gestao-normas",
+						"v1",
+						"normas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apagar Norma",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/gestao-normas/v1/normas/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"gestao-normas",
+						"v1",
+						"normas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Norma",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":\"2\",    \n    \"titulo\":\"Teste 2!\",\n\t\"descricao\":\"Teste descricao\",\n    \"codigo\":\"142\",\n\t\"categoria\":\"ABNT\",\n\t\"data_inclusao\":\"2021-01-12\",\n\t\"data_publicacao\":\"2019-11-02\"    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/gestao-normas/v1/normas/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"gestao-normas",
+						"v1",
+						"normas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,28 @@
+
+
+sudo docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:12.0.1
+
+
+
+
+
+
+
+docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=password -p 8180:8080 --name keycloak-server -d jboss/keycloak:10.0.1
+
+
+compose
+
+version: '3.7'
+services:
+  keycloak:
+    image: "jboss/keycloak:10.0.1"
+    container_name: "keycloak-server"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=password
+    ports:
+      - "8180:8000"
+      
+      
+docker-compose -d up
