@@ -39,8 +39,7 @@ public class GestaoNormasController {
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseDTO> addNorma(@RequestBody @Valid RequestDTO requestDTO) {
-		log.info("GestaoNormasController.adicionarNorma [{}]", requestDTO);
-		
+		log.info("GestaoNormasController.adicionarNorma [{}]", requestDTO);		
 		ResponseDTO standard = normaService.criarNorma(requestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(standard);
 	}
@@ -54,12 +53,14 @@ public class GestaoNormasController {
 	
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
     public ResponseEntity<ResponseDTO> updateStandard(@PathVariable Integer id, @RequestBody @Valid RequestDTO requestDTO) {
+		log.info("GestaoNormasController.updateStandard");        
         ResponseDTO dto = normaService.alterarNorma(requestDTO);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
     public ResponseEntity<ResponseDTO> deleteStandard(@PathVariable Integer id) {
+		log.info("GestaoNormasController.deleteStandard");        
         normaService.excluirNorma(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
