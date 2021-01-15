@@ -3,63 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <title>SIGO - Sistema Integrado de Gestão e Operação</title>
-
 <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
-<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
 <link th:rel="stylesheet" th:href="@{/css/style.css}" />
-
 </head>
-<body>	
-
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        	<div class="container">
-				<a class="navbar-brand" href="/">SIGO</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarResponsive" aria-controls="navbarResponsive"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
-											
-						<li class="nav-item dropdown">
-					        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					          Normas
-					        </a>
-					        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					          <a class="dropdown-item" href="#">Consulta</a>
-					          <div class="dropdown-divider"></div>
-					          <a class="dropdown-item" href="#">Cadastro</a>
-					        </div>
-					    </li>	
-						
-						<li class="nav-item"><a class="nav-link" href="#">Consultorias</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
-					</ul>
-				</div>
-			</div>
-      </nav>
-    </header>
-
-    <main role="main" class="container">
-      	<h1>Hello !</h1>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <span class="suporte">Suporte: <i class="far fa-comments"></i> 
-		(12) 91234-5678 <i class="fas fa-phone"></i> 
-		suporte@indtexbr.com.br <i class="far fa-envelope"></i> </span>
-      </div>
-    </footer>
-
+<body>
+	<header th:insert="fragments/general.html :: header"></header>
+	
+	<main role="main" class="container">
+		<h1>Olá !</h1>
+		<h1 th:utext="${nomeUsuario}"></h1>
+		<h2 th:utext="${mensagens}" ></h2>
+	</main>
+	
+    <footer th:insert="fragments/general.html :: footer"></footer>
+    
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	<script>
-		
-	</script>
 </body>
 </html>

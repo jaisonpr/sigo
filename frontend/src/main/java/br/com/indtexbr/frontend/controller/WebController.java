@@ -3,10 +3,16 @@ package br.com.indtexbr.frontend.controller;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.keycloak.KeycloakPrincipal;
+import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.keycloak.representations.AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import br.com.indtexbr.frontend.helper.WebHelper;
 
 @Controller
 public class WebController {
@@ -19,7 +25,9 @@ public class WebController {
 	}
 	
 	@GetMapping("/home")
-    public String homePage(Model model) {		
+    public String homePage(Model model) {			
+        String firstname = WebHelper.getAccessToken(request).getGivenName();		
+		model.addAttribute("nomeUsuario", firstname);
         return "home";
     }
 	
@@ -28,4 +36,5 @@ public class WebController {
 		request.logout();
 		return "redirect:/";
 	}	
+	
 }

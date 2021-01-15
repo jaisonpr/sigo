@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>SIGO - Sistema Integrado de Gestão e Operação</title>
+</head>
+<body>
+
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#">SIGO</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item "><a class="nav-link" th:href="@{/home}"><i
+								class="fas fa-home"> Home </i></a></li>
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"><i class="fas fa-file"> Normas </i> </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" th:href="@{/gestao-normas/listar}">Consulta</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/gestao-normas/cadastrar">Cadastro</a>
+							</div></li>
+
+						<li class="nav-item"><a class="nav-link" href="#"> <i
+								class="fas fa-user-tie"> Consultorias </i>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/logout}">
+								<i class="fas fa-sign-out-alt"> Logout </i>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<footer class="footer" th:fragment="footer">
+		<div class="suporte">
+			<i class="fas fa-phone"> (12) 91234-5678 </i> 
+			<i class="far fa-envelope"> suporte@indtexbr.com.br </i>
+			<button style="height: 58px;"> <i class="far fa-comments"> Suporte </i>	</button>
+		</div>
+	</footer>
+</body>
+</html>

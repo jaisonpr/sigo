@@ -3,44 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <title>SIGO - Sistema Integrado de Gestão e Operação</title>
-
 <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
 <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
 <link th:rel="stylesheet" th:href="@{/css/style.css}" />
-
 </head>
 <body>	
 
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        	<div class="container">
-				<a class="navbar-brand" href="/">SIGO</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarResponsive" aria-controls="navbarResponsive"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark  justify-content-center">
+      	<a class="navbar-brand" href="/">SIGO - Sistema Integrado de Gestão e Operação</a> 
       </nav>
     </header>
 
     <main role="main" class="container">
-      	<h1>Hello !</h1>
-    </main>
+		<h1>Olá! Você não ainda não fez o <a th:href="@{/home}">Login</a></h1>
+	</main>
 
-    <footer class="footer">
-      <div class="container">
-        <span class="suporte">Suporte: <i class="far fa-comments"></i> 
-		(12) 91234-5678 <i class="fas fa-phone"></i> 
-		suporte@indtexbr.com.br <i class="far fa-envelope"></i> </span>
-      </div>
-    </footer>
+   	<div th:replace="fragments/general.html :: footer"></div>
 
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	<script>
-		
-	</script>
 </body>
 </html>
