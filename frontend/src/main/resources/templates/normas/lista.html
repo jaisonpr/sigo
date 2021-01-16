@@ -10,10 +10,30 @@
 <body>	
 	<header th:insert="fragments/general.html :: header"> </header>
 
-    <main role="main" class="container">
-      	<h1>Lista</h1>
-      	
-    </main>
+    <main class="container">
+		<div th:if="${errorMessage}" th:utext="${errorMessage}" class="alert alert-danger" role="alert" />
+		<div th:if="${alertMessage}" th:utext="${alertMessage}" class="alert alert-warning" role="alert" />
+		<div th:if="${successMessage}" th:utext="${successMessage}" class="alert alert-success" role="alert" />
+	        
+	        
+	    <div class="row row-content">
+            <div class="col-12">
+            	<h3>Consulta de Normas</h3>
+            </div>    
+            <div class="col-12 col-md-9">
+                
+                <form action="#" th:action="@{/gestao-normas/listar}" th:object="${norma}" method="get">
+                    <div class="form-group row">
+                        <label for="firstname" class="col-md-2 col-form-label">Título</label>
+                        <div class="col-md-10">
+                            <input type="text" id="titulo" placeholder="Título" /> 
+                        </div>
+                    </div>
+                </form>             
+	        
+            </div>
+        </div>			
+	</main>
     
     <div th:replace="fragments/general.html :: footer"></div>
 

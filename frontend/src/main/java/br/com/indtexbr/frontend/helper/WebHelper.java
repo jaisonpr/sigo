@@ -27,5 +27,5 @@ public class WebHelper {
         KeycloakSecurityContext session = principal.getKeycloakSecurityContext();
         AccessToken accessToken = session.getToken();
         return accessToken;
-	}
+	}	
 }

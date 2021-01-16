@@ -10,10 +10,15 @@
 <body>
 	<header th:insert="fragments/general.html :: header"></header>
 	
-	<main role="main" class="container">
-		<h1>Olá !</h1>
-		<h1 th:utext="${nomeUsuario}"></h1>
-		<h2 th:utext="${mensagens}" ></h2>
+	<main class="container">
+   		<div class="row row-content">
+           	<div class="col-12">
+           		<h3>Olá!</h3>
+           		
+				<h1 th:utext="${nomeUsuario}"></h1>
+				<h2 th:utext="${mensagens}" ></h2>
+           	</div>
+        </div>    
 	</main>
 	
     <footer th:insert="fragments/general.html :: footer"></footer>

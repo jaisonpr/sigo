@@ -3,10 +3,6 @@ package br.com.indtexbr.frontend.controller;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-import org.keycloak.KeycloakPrincipal;
-import org.keycloak.KeycloakSecurityContext;
-import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
-import org.keycloak.representations.AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +13,7 @@ import br.com.indtexbr.frontend.helper.WebHelper;
 @Controller
 public class WebController {
 	
-	private final HttpServletRequest request;
+	protected HttpServletRequest request;
 	
 	@Autowired
 	public WebController(HttpServletRequest request) {

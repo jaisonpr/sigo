@@ -8,15 +8,19 @@
 <link th:rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>	
-
+   
     <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark  justify-content-center">
       	<a class="navbar-brand" href="/">SIGO - Sistema Integrado de Gestão e Operação</a> 
       </nav>
     </header>
 
-    <main role="main" class="container">
-		<h1>Olá! Você não ainda não fez o <a th:href="@{/home}">Login</a></h1>
+    <main class="container">
+   		<div class="row row-content">
+           	<div class="col-12">
+           		<h3>Olá! Você não ainda não fez o <a th:href="@{/home}">Login</a></h3>
+           	</div>
+        </div>    
 	</main>
 
    	<div th:replace="fragments/general.html :: footer"></div>
