@@ -19,7 +19,7 @@ public class WebController {
 	public WebController(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+		
 	@GetMapping("/home")
     public String homePage(Model model) {			
         String firstname = WebHelper.getAccessToken(request).getGivenName();		

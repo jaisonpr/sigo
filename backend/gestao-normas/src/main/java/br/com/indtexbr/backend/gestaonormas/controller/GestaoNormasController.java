@@ -1,9 +1,10 @@
 package br.com.indtexbr.backend.gestaonormas.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.indtexbr.backend.gestaonormas.dto.RequestDTO;
@@ -31,15 +33,15 @@ public class GestaoNormasController {
     private NormaService normaService;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Page<ResponseDTO>> getNormas(Pageable pageable) {
+	public ResponseEntity<List<ResponseDTO>> getNormas() {
 		log.info("GestaoNormasController.getNormas");        
-		Page<ResponseDTO> normas = normaService.listarNormas(pageable);
+		List<ResponseDTO> normas = normaService.listarNormas();
         return ResponseEntity.status(HttpStatus.OK).body(normas);
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseDTO> addNorma(@RequestBody @Valid RequestDTO requestDTO) {
-		log.info("GestaoNormasController.adicionarNorma [{}]", requestDTO);		
+		log.info("GestaoNormasController.adicionarNorma ({})", requestDTO);		
 		ResponseDTO standard = normaService.criarNorma(requestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(standard);
 	}
@@ -52,15 +54,15 @@ public class GestaoNormasController {
 	}
 	
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
-    public ResponseEntity<ResponseDTO> updateStandard(@PathVariable Integer id, @RequestBody @Valid RequestDTO requestDTO) {
-		log.info("GestaoNormasController.updateStandard");        
+    public ResponseEntity<ResponseDTO> updateNorma(@PathVariable Integer id, @RequestBody @Valid RequestDTO requestDTO) {
+		log.info("GestaoNormasController.updateNorma ({})");        
         ResponseDTO dto = normaService.alterarNorma(requestDTO);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
-    public ResponseEntity<ResponseDTO> deleteStandard(@PathVariable Integer id) {
-		log.info("GestaoNormasController.deleteStandard");        
+    public ResponseEntity<ResponseDTO> deleteNorma(@PathVariable Integer id) {
+		log.info("GestaoNormasController.deleteNorma ({})", id);        
         normaService.excluirNorma(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

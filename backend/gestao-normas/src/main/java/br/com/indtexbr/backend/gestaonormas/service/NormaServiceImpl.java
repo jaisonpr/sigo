@@ -38,16 +38,17 @@ public class NormaServiceImpl implements NormaService {
 	}
 
 	@Override
-	public Page<ResponseDTO> listarNormas(Pageable pageable) {
-		log.info("NormaServiceImpl.listarNormas ({})", pageable);
+	public List<ResponseDTO> listarNormas() {
+		log.info("NormaServiceImpl.listarNormas ({})");
 
-		Page<Norma> normas = repository.findAll(pageable);
+		List<Norma> normas = repository.findAll();
 
 		List<ResponseDTO> responseDTOs = normas.stream()
 				.map(standardEntity -> modelMapper.map(standardEntity, ResponseDTO.class))
 					.collect(Collectors.toList());
 
-		return new PageImpl<>(responseDTOs, normas.getPageable(), normas.getTotalElements());
+		return responseDTOs;
+				//new PageImpl<>(responseDTOs, normas.getPageable(), normas.getTotalElements());
 	}
 
 	@Override
