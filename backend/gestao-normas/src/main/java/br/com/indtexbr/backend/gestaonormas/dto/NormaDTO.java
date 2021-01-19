@@ -1,7 +1,5 @@
 package br.com.indtexbr.backend.gestaonormas.dto;
 
-import javax.validation.constraints.NotBlank;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,22 +7,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RequestDTO {
+public class NormaDTO {
 
-    @NotBlank
+	private Integer id;	
     private String titulo;
-
-    private String descricao;
-    
-    @NotBlank
+    private String descricao;    
     private String categoria;
-
-    @NotBlank
-    private String codigo;
-    
+    private String codigo;    
     private String dataInclusao;
-
     private String dataPublicacao;
-    
-    private Integer id;
+    private Boolean atualizada; 
 }

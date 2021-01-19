@@ -1,7 +1,5 @@
 package br.com.indtexbr.backend.gestaonormas.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,9 +34,12 @@ public class Norma {
     @Column(name = "categoria")
     private String categoria;
  
-    @Column(name = "data_inclusao")    
-    private Date dataInclusao;
+    @Column(name = "dataInclusao")    
+    private String dataInclusao;
     
-    @Column(name = "data_publicacao")    
-    private Date dataPublicacao;
+    @Column(name = "dataPublicacao")    
+    private String dataPublicacao;
+    
+    @Column(name = "atualizada")    
+    private Boolean atualizada;
 }

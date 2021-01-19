@@ -2,15 +2,15 @@ package br.com.indtexbr.backend.gestaonormas.service;
 
 import java.util.List;
 
-import br.com.indtexbr.backend.gestaonormas.dto.RequestDTO;
-import br.com.indtexbr.backend.gestaonormas.dto.ResponseDTO;
+import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
+import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 
 public interface NormaService {
 
 	//Page<ResponseDTO> listarNormas(Pageable pageable);
-	List<ResponseDTO> listarNormas();
-	ResponseDTO criarNorma(RequestDTO request);
-	ResponseDTO alterarNorma(RequestDTO request);
-	ResponseDTO obterNorma(Integer id);
+	List<NormaDTO> listarNormas();
+	NormaDTO criarNorma(NormaDTO norma);
+	NormaDTO alterarNorma(NormaDTO norma);
+	NormaDTO obterNorma(Integer id);
 	void excluirNorma(Integer id);
 }

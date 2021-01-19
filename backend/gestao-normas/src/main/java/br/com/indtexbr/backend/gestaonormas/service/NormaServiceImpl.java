@@ -10,8 +10,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.indtexbr.backend.gestaonormas.dto.RequestDTO;
-import br.com.indtexbr.backend.gestaonormas.dto.ResponseDTO;
+import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
+import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 import br.com.indtexbr.backend.gestaonormas.entity.Norma;
 import br.com.indtexbr.backend.gestaonormas.repository.NormaRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -27,47 +27,46 @@ public class NormaServiceImpl implements NormaService {
 	private ModelMapper modelMapper;
 
 	@Override
-	public ResponseDTO criarNorma(RequestDTO dto) {
+	public NormaDTO criarNorma(NormaDTO dto) {
 		log.info("NormaServiceImpl.criarNorma ({})", dto);
 
 		Norma entity = modelMapper.map(dto, Norma.class);
 
 		entity = repository.save(entity);
 
-		return modelMapper.map(entity, ResponseDTO.class);
+		return modelMapper.map(entity, NormaDTO.class);
 	}
 
 	@Override
-	public List<ResponseDTO> listarNormas() {
+	public List<NormaDTO> listarNormas() {
 		log.info("NormaServiceImpl.listarNormas ({})");
 
 		List<Norma> normas = repository.findAll();
 
-		List<ResponseDTO> responseDTOs = normas.stream()
-				.map(standardEntity -> modelMapper.map(standardEntity, ResponseDTO.class))
+		List<NormaDTO> responseDTOs = normas.stream()
+				.map(standardEntity -> modelMapper.map(standardEntity, NormaDTO.class))
 					.collect(Collectors.toList());
 
 		return responseDTOs;
-				//new PageImpl<>(responseDTOs, normas.getPageable(), normas.getTotalElements());
 	}
 
 	@Override
-	public ResponseDTO alterarNorma(RequestDTO dto) {
+	public NormaDTO alterarNorma(NormaDTO dto) {
 		log.info("NormaServiceImpl.alterarNorma ({})", dto);
 	
 		Norma entity = repository.save( modelMapper.map(dto, Norma.class));
 		
-		return modelMapper.map(entity, ResponseDTO.class);
+		return modelMapper.map(entity, NormaDTO.class);
 	}
 
 	@Override
-	public ResponseDTO obterNorma(Integer id) {
+	public NormaDTO obterNorma(Integer id) {
 		log.info("NormaServiceImpl.obterNorma ({})", id);
 		
 		Norma entity = repository.findById(id)
 	                .orElseThrow(() -> new RuntimeException("'Norma' not found"));
 		
-		return modelMapper.map(entity, ResponseDTO.class);
+		return modelMapper.map(entity, NormaDTO.class);
 	}
 
 	@Override
@@ -76,6 +75,7 @@ public class NormaServiceImpl implements NormaService {
 		
 		Norma entity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("'Norma' not found"));	
+		
 		repository.delete(entity);
 	}
 }
