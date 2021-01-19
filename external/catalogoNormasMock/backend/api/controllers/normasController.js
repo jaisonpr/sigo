@@ -4,11 +4,12 @@ var mongoose = require('mongoose'),
     Workout = mongoose.model('Normas');
 
 exports.getNorma = function (req, res) {
-    console.log("---> exports.getNorma ");
-
-    Workout.findById(req.params.orgao, req.params.numero, function (err, workout) {
+    Workout.find({
+        "orgao": req.params.orgao,
+        "numero": req.params.numero
+    }, function (err, norma) {
         if (err)
             res.send(err);
-        res.json(workout);
+        res.json(norma);
     });
 };

@@ -1,20 +1,20 @@
 version: "3"
 
 services:
-  mongo-normas-mock:
-    container_name: mongo-normas-mock
+  mongo:
+    container_name: mongodb
     image: mongo
     ports:
-      - "27018:27017"
+      - "27019:27017"
     volumes:
       - ./data:/data/db
 
-  backend-api-normas-mock:
-    container_name: backend-api-normas-mock
+  backend-api:
+    container_name: backend-api
     build: ./backend
     command: "node server.js"
     ports:
       - "3000:3000"
     depends_on:
-      - "mongo-normas-mock"
+      - "mongo"
 

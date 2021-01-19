@@ -7,10 +7,10 @@ var NormaSchema = new Schema({
     type: String
   },
   numero: {
-    type: Integer
+    type: String
   },
   versao: {
-    type: Integer
+    type: String
   },
   status: {
     type: [{
@@ -18,10 +18,6 @@ var NormaSchema = new Schema({
       enum: ['Em vigor', 'Cancelada']
     }],
     default: ['Em vigor']
-  },
-  Created_date: {
-    type: Date,
-    default: Date.now
   }
 });
 

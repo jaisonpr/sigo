@@ -8,7 +8,7 @@ const
 const Workout = require('./api/models/norma');
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
-mongoose.connect('mongodb://mongo:27018/normas-db')
+mongoose.connect('mongodb://mongo:27017/normas-db')
   .then((db) => {
     console.log('Connected correctly to database server');
   })
