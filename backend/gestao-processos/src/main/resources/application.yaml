@@ -1,0 +1,20 @@
+keycloak:
+  auth-server-url: http://localhost:8181/auth
+  realm: SIGO
+  resource: backend-gestao-normas
+  credentials:
+    secret: 6fd1b103-7e2b-4c77-850f-a4b41161667f
+  bearer-only: true
+  public-client: true
+
+  security-constraints:
+    - auth-roles:
+      - Gestor
+      security-collections:
+      - name: 
+        patterns:
+        - /gestao-normas/*
+
+logging:
+  level:
+    org.keycloak: TRACE
