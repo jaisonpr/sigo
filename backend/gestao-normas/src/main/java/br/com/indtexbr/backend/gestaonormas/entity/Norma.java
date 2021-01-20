@@ -28,6 +28,15 @@ public class Norma {
     @Column(name = "descricao")
     private String descricao;
     
+    @Column(name = "orgao")
+    private String orgao;
+    
+    @Column(name = "numero")
+    private String numero;
+    
+    @Column(name = "versao")
+    private Integer versao;
+    
     @Column(name = "codigo")
     private String codigo;
 
@@ -42,4 +51,7 @@ public class Norma {
     
     @Column(name = "atualizada")    
     private Boolean atualizada;
+    
+    @Column(name = "ativa")    
+    private Boolean ativa;
 }

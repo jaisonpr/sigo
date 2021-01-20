@@ -18,6 +18,7 @@ public class WebHelper {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept( Collections.singletonList(MediaType.APPLICATION_JSON));
 		headers.setBearerAuth(context.getTokenString());
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		return headers;
 	}
 	

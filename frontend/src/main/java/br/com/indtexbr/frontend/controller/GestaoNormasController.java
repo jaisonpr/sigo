@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +22,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.indtexbr.frontend.dto.RequestDTO;
-import br.com.indtexbr.frontend.dto.ResponseDTO;
+import br.com.indtexbr.frontend.dto.NormaDTO;
 import br.com.indtexbr.frontend.helper.WebHelper;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,22 +36,32 @@ public class GestaoNormasController {
 
 	@Value("${api.rest.endpoint.normas}") /// gestao-normas/v1/normas
 	private String url;
-
+	
 	private final HttpServletRequest request;
 
 	@Autowired
 	public GestaoNormasController(HttpServletRequest request) {
 		this.request = request;
 	}
+	
+	/* Create */
+	
+	@GetMapping("/gestao-normas/cadastrar")
+	public String showFormCadastro(Model model) {
+		log.info("GestaoNormasController.showFormCadastro");
+		model.addAttribute("norma", new NormaDTO());
+		return "normas/cadastro";
+	}
 
 	@PostMapping("/gestao-normas/cadastrar")
-	public String processFormCadastro(@Valid @ModelAttribute("norma") RequestDTO norma, BindingResult result,
+	public String processFormCadastro(@Valid @ModelAttribute("norma") NormaDTO norma, BindingResult result,
 			Model model) {
-		log.info("GestaoNormasController.processForm");
+		log.info("GestaoNormasController.processFormCadastro");
 		/*
 		 * if (result.hasErrors()) { System.out.println("\t--> ERRRORRR"); return
 		 * "add-user"; }
 		 */
+		norma.setAtualizada(Boolean.TRUE);
 
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -63,21 +70,29 @@ public class GestaoNormasController {
 			RestTemplate restTemplate = new RestTemplate();
 
 			HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
-			headers.setContentType(MediaType.APPLICATION_JSON);
-
+			
 			HttpEntity<String> entity = new HttpEntity<>(json, headers);
 
-			ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-
-			model.addAttribute("successMessage", "Norma adicionada com sucesso");
-
+			if (norma.getId() != null && norma.getId() > 0) {
+				Map<String, String> urlParams = new HashMap<String, String> ();
+				urlParams.put("id", norma.getId().toString());
+				ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.PUT, entity, String.class, urlParams);
+				model.addAttribute("successMessage", "Norma alterada com sucesso");
+				
+			} else {
+				ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
+				model.addAttribute("successMessage", "Norma adicionada com sucesso");
+			} 
+			
 		} catch (IOException e) {
 			log.error(e.getMessage(), e);
 			model.addAttribute("errorMessage", "Ocorreu um erro");
 		}
-		return "normas/cadastro";
+		return showFormListar(model);
 	}
-
+		
+	/* Read */
+	
 	@GetMapping("/gestao-normas/")
 	public String showFormListar(Model model) {
 		log.info("GestaoNormasController.listar");
@@ -85,142 +100,131 @@ public class GestaoNormasController {
 		RestTemplate restTemplate = new RestTemplate();
 
 		HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
-		headers.setContentType(MediaType.APPLICATION_JSON);
 
 		HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
 		ResponseEntity<List> rp = restTemplate.exchange(url, HttpMethod.GET, entity, List.class);
 
-		System.out.println(rp);
-		System.out.println("---");
-		System.out.println(rp.getBody());
-		System.out.println(rp.getBody().getClass());
-		System.out.println(rp.getBody().size());
-
 		ObjectMapper mapper = new ObjectMapper();
 
-		List<ResponseDTO> array = mapper.convertValue(rp.getBody(), new TypeReference<List<ResponseDTO>>(){});
-
-		for (ResponseDTO dto : array) {
-			System.out.println(dto);
-		}
+		List<NormaDTO> array = mapper.convertValue(rp.getBody(), new TypeReference<List<NormaDTO>>(){});
 		
 		model.addAttribute("normas", array);
 
 		return "normas/lista";
 	}
 	
+	@GetMapping("/gestao-normas/visualizar")
+	public String showNorma(@RequestParam("id") String id, Model model) {
+		log.info("GestaoNormasController.showNorma ({})", id);
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
+
+		HttpEntity<String> entity = new HttpEntity<>("body", headers);
+		
+		Map<String, String> urlParams = new HashMap<String, String> ();
+		urlParams.put("id", id);
+					
+		ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.GET, entity, String.class, urlParams);
+			
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			NormaDTO dto = mapper.readValue( rp.getBody(), NormaDTO.class);
+			
+			model.addAttribute("norma", dto);
+		} catch (Exception e) {
+			System.out.println(" exxxxxxxxxxxxxxxx");
+		}
+		return "normas/view";
+	}
+	
+	/* Update */
+	
+	@GetMapping("/gestao-normas/atualizar")
+	public String showFormAtualizacao(@RequestParam("id") String id, Model model) {
+		log.info("GestaoNormasController.showFormAtualizacao ({})", id);
+		RestTemplate restTemplate = new RestTemplate();
+
+		HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
+
+		HttpEntity<String> entity = new HttpEntity<>("body", headers);
+		
+		Map<String, String> urlParams = new HashMap<String, String> ();
+		urlParams.put("id", id);
+					
+		ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.GET, entity, String.class, urlParams);
+			
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			NormaDTO dto = mapper.readValue( rp.getBody(), NormaDTO.class);
+			
+			model.addAttribute("norma", dto);
+			System.out.println("------------------>  " + dto);
+		} catch (Exception e) {
+			System.out.println(" exxxxxxxxxxxxxxxx");
+		}
+		return "normas/cadastro";
+	}
+
+	@PostMapping("/gestao-normas/atualizar")
+	public String processFormAtualizacao(@Valid @ModelAttribute("norma") NormaDTO norma, BindingResult result,
+			Model model) {
+		log.info("GestaoNormasController.processFormAtualizacao");
+		
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(norma);
+
+			RestTemplate restTemplate = new RestTemplate();
+
+			HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
+			
+			HttpEntity<String> entity = new HttpEntity<>(json, headers);
+
+			ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.PUT, entity, String.class);
+
+			model.addAttribute("successMessage", "Norma atualizada com sucesso");
+
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+			model.addAttribute("errorMessage", "Ocorreu um erro");
+		}
+		return showFormListar(model);
+	}
+	
+	
+	/* Delete */
+
 	@GetMapping("/gestao-normas/remover")
 	public String remover(@RequestParam("id") String id, Model model) {
-		model.addAttribute("successMessage", "Norma removida com sucesso");
-		System.out.println("removerrrrrrrrrrrrrrrrr");
-		System.out.println(id);
+		log.info("GestaoNormasController.remover ({})", id);
 		
 		RestTemplate restTemplate = new RestTemplate();
 
 		HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
-		headers.setContentType(MediaType.APPLICATION_JSON);
 
 		HttpEntity<String> entity = new HttpEntity<>("body", headers);
-
 		
 		Map<String, String> urlParams = new HashMap<String, String> ();
 		urlParams.put("id", id);
-		
-		/*UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url).queryParam("id", id);
-		
-		System.out.println(builder.buildAndExpand(urlParams).toUri());
-		
-		
-		
-		
-		String url = "http://test.com/Services/rest/{id}/Identifier";
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("id", "1234");
-		URI uri = UriComponentsBuilder.fromUriString(url)
-		        .buildAndExpand(params)
-		        .toUri();
-		uri = UriComponentsBuilder
-		        .fromUri(uri)
-		        .queryParam("name", "myName")
-		        .build()
-		        .toUri();*/
-		
-		
-		
+					
 		ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.DELETE, entity, String.class, urlParams);
-		
-		
+			
+		model.addAttribute("successMessage", "Norma removida com sucesso");
 		
 		return showFormListar(model);
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
 
-	@GetMapping("/gestao-normas/listar/")
-	public String processFormListar(Model model) {
-		log.info("GestaoNormasController.listar");
-
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			// String json = mapper.writeValueAsString(norma);
-
-			RestTemplate restTemplate = new RestTemplate();
-
-			HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
-			headers.setContentType(MediaType.APPLICATION_JSON);
-
-			HttpEntity<String> entity = new HttpEntity<>("body", headers);
-
-			ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-
-			System.out.println(rp);
-			System.out.println("---");
-			System.out.println(rp.getBody());
-
-			model.addAttribute("normasPage", rp);
-
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			model.addAttribute("errorMessage", "Ocorreu um erro");
-		}
-		return "normas/lista";
-	}
-
-	@GetMapping("/gestao-normas/cadastrar")
-	public String showFormCadastro(Model model) {
-		log.info("GestaoNormasController.showForm");
-		model.addAttribute("norma", new RequestDTO());
-		return "normas/cadastro";
-	}
-
-	@GetMapping("/gestao-normas")
-	public String homePage(Model model) {
-		log.info("GestaoNormasController.homePage");
-
-		RestTemplate restTemplate = new RestTemplate();
-		String result = restTemplate.getForObject(url, String.class);
-
-		System.out.println(result);
-
-		return "home";
-	}
-
-	@GetMapping("/gestao-normas-jwt")
-	public String gestao(Model model) {
-
-		RestTemplate restTemplate = new RestTemplate();
-
-		HttpEntity<String> entity = new HttpEntity<>("body", WebHelper.getHeaderBearerAuth(request));
-
-		ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-
-		System.out.println(rp.getStatusCode());
-		System.out.println(rp.getBody());
-
-		// String result = restTemplate.getForObject(url, String.class);
-		// restTemplate.postForObject(url, entity, String.class);
-
-		return "normas/lista";
-	}
 }

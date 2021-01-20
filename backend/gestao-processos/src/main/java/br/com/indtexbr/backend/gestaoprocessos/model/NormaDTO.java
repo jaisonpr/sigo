@@ -1,4 +1,4 @@
-package br.com.indtexbr.frontend.dto;
+package br.com.indtexbr.backend.gestaoprocessos.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class NormaDTO {
     private String descricao;    
     private String orgao;    
     private String numero;    
-    private Integer versao;     
+    private Integer versao;    
     private String categoria;
     private String codigo;    
     private String dataInclusao;
