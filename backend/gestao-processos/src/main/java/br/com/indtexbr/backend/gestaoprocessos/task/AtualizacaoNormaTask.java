@@ -1,7 +1,7 @@
 package br.com.indtexbr.backend.gestaoprocessos.task;
 
+import java.io.IOException;
 import java.net.URI;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
@@ -63,14 +63,38 @@ public class AtualizacaoNormaTask {
 			if ( Integer.parseInt(mock.getVersao()) > norma.getVersao()) {
 				log.info("DESATUALIZADA");
 				
+				norma.setAtualizada(false);
+				enviarNorma(norma);
 			}
 			
 			if ( norma.getAtiva() && mock.getStatus()[0].equals("Cancelada")) { // ['Em vigor', 'Cancelada']
 				log.info("CANCELADA");
 				
+				norma.setAtiva(false);
+				enviarNorma(norma);
 			}
 		}
 	}
+	
+	private void enviarNorma(NormaDTO norma) {
+
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(norma);
+	
+			RestTemplate restTemplate = new RestTemplate();
+
+			HttpEntity<String> entity = new HttpEntity<String>(json, getHeaderAccessToken());
+			
+			Map<String, String> urlParams = new HashMap<String, String> ();
+			urlParams.put("id", norma.getId().toString());
+			ResponseEntity<String> rp = restTemplate.exchange(URL_GESTAO_NORMAS + "/{id}", HttpMethod.PUT, entity, String.class, urlParams);
+
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+		}
+	}
+	
 	
 	/**
 	* Busca a Norma no Catálogo de Normas
@@ -98,8 +122,6 @@ public class AtualizacaoNormaTask {
 			List<NormaMock> array = mapper.convertValue(response, new TypeReference<List<NormaMock>>() {});
 
 			normaMock = array.get(0);
-
-			System.out.println(normaMock);
 
 			TimeUnit.SECONDS.sleep(5);
 
