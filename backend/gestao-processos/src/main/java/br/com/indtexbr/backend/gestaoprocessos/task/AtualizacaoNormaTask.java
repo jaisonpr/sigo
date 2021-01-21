@@ -48,7 +48,7 @@ public class AtualizacaoNormaTask {
 	* @version 1.0
 	* @since   2021-01-20 
 	*/
-	@Scheduled(fixedDelay = 10000)
+	@Scheduled(fixedDelayString = "${fixedDelay.in.milliseconds}")
 	public void verifcarListaNormas() {
 		log.info("AtualizacaoNormaTask.verifcarListaNormas");
 		
