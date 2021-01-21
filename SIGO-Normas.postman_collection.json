@@ -6,128 +6,161 @@
 	},
 	"item": [
 		{
-			"name": "Adicionar Norma",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTA2NTkyMDMsImlhdCI6MTYxMDY1ODkwMywianRpIjoiOTRiYTgxZTEtY2MyOS00ZmVjLWEzMzYtZDdkNDE0OTc4NjUyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6IjE2M2M1OTI1LWM5NzAtNGIxMi05YjJkLTVmNjIwMTIzOTk4NiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.k0CzqsnHFe4yPb1_g9ZHvOt16-SKrDrhRrLpwjaPKHH-IH6afBa9d_Z9T5-ZjBVT-aHs230W8TdVWnY_iR4259LzRroGNzd2pl9QRBE3GiN_usvNQT7VcP0zdMlhBB9KLWcjzSpvSyPd-NlWdWmOokCfI2sRpkYkw8UGx8mXVQVG3gj-P2BSYmA3UVLOszeeOONKxIkvwpH23VP-Hoocqs8UDyAZSwTnKo3HjiSJrpm9UC2WEoyetw9JOq15mlvPzgtbml95HNSZkuSjYllCL3fUpqBu1LUumxfrKyfUTnNDwTbc97W-cPfFoGoxWM-jwngo4tR28gFTYkC73Si8Tg",
-							"type": "string"
+			"name": "Normas",
+			"item": [
+				{
+					"name": "Adicionar Norma",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEyNTQwNDgsImlhdCI6MTYxMTI1Mzc0OCwianRpIjoiNDgxMDk5MDItMmQ4ZS00YmIxLWJhNWYtNTA4OWFhZTFhNDk5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImU4ODlkZGI3LWU0OWUtNDkxNC04OGU0LTdhZWIwZjdhMDhjOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.DjuEb280l28JkRqDPEnX1O5AoLSiFByrfnNESSWYvViElX4MK4KBol27_wmDT8ThkeysVSXPmZbkoVm4dXs7dIJ4krp-4SIe_E_Y6LI5pJp02BzGHpOKYs2j0CCqbEsZ-pxKizLC9e47NS2Z3O_4UKRrM5c0eoNZ7_pvV2f0Ow6mKuwsLCbIrCX1b5EkBiJCNaG2k2ZviD5pPMLBzOaOGDeE48VKFzCZMcwk73QHwwphr_Vrf7wafZkK851muo0CNLZbtD_BzFvsCLWlIpunXHNk-3oupQ57D46AodXXUC68XbGvISmyZMEF8EUd861QC_5a5-TXPyCy0TjDgtpkgg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Teste\",\n    \"descricao\": \"Teste descricao\",\n    \"orgao\": \"ABNT\",\n    \"numero\": \"12984\",\n    \"versao\": 1,\n    \"atualizada\": \"true\",\n    \"ativa\": \"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"titulo\":\"Teste\",\n\t\"descricao\":\"Teste descricao\",\n    \"codigo\":\"142\",\n\t\"categoria\":\"ABNT\",\n\t\"data_inclusao\":\"2021-01-12\",\n\t\"data_publicacao\":\"2019-11-02\"    \n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Listar Normas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEyNTQwNDgsImlhdCI6MTYxMTI1Mzc0OCwianRpIjoiNDgxMDk5MDItMmQ4ZS00YmIxLWJhNWYtNTA4OWFhZTFhNDk5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImU4ODlkZGI3LWU0OWUtNDkxNC04OGU0LTdhZWIwZjdhMDhjOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.DjuEb280l28JkRqDPEnX1O5AoLSiFByrfnNESSWYvViElX4MK4KBol27_wmDT8ThkeysVSXPmZbkoVm4dXs7dIJ4krp-4SIe_E_Y6LI5pJp02BzGHpOKYs2j0CCqbEsZ-pxKizLC9e47NS2Z3O_4UKRrM5c0eoNZ7_pvV2f0Ow6mKuwsLCbIrCX1b5EkBiJCNaG2k2ZviD5pPMLBzOaOGDeE48VKFzCZMcwk73QHwwphr_Vrf7wafZkK851muo0CNLZbtD_BzFvsCLWlIpunXHNk-3oupQ57D46AodXXUC68XbGvISmyZMEF8EUd861QC_5a5-TXPyCy0TjDgtpkgg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8091/gestao-normas/v1/normas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8091",
-					"path": [
-						"gestao-normas",
-						"v1",
-						"normas"
-					]
+				{
+					"name": "Apagar Norma",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Norma",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEyNTQyMjQsImlhdCI6MTYxMTI1MzkyNCwianRpIjoiZDI2ZDk2MzctM2QyMy00N2NkLWE4MDMtNzllYjAxMGQ4MTZlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImMyOTRhZWYwLTIxMWMtNDc4Mi1hY2RmLTJmYjM0NTkwMjkzMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.I0JYSv7XQUfx2S37R9944E5H1YT99AyD5GZU9lGp8icL5_7_T8uKfdXVQfhzQiwHTyOupKqMYZp1M4r3gHR5EJE6M64FYSSLYZmZ59nW8txLXhJm8dOWo67jgEiUWe7NozuEEruEydNDg18aiCl-xUoJA4eJ9RdisZEDIWrMdJnR8uSOaQafeXiuW0UGbK18dBT1eVzg8HVdqRucV5dHmQ6mePB5VWm56KS28P78k074FVAcyAnFDlgs0Wkx8RC7LaTiCymciRhO-jD6vZKsdX0CB8VBMfq9rZsW644SoEZ7fMyDQEr3d3qHk1YyThxJ8-8NMcaivkr0cWtPDX2grQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Teste 123\",\n    \"descricao\": \"Teste descricao\",\n    \"orgao\": \"ABNT\",\n    \"numero\": \"12984\",\n    \"link\": null,\n    \"versao\": 1,\n    \"atualizada\": true,\n    \"ativa\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"description": "APIs de gestao-normas\n"
 		},
 		{
-			"name": "Listar Normas",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwbXhPUUhmNTlPc2otTzE3STM5d1BGbVpkZnNoNHZFdjRaT3RwUi01TGZnIn0.eyJleHAiOjE2MTA2NDgzNzksImlhdCI6MTYxMDY0ODA3OSwianRpIjoiNTA4YjA5MTgtNWIzYi00NTNkLWFlNzEtYTU5MmQ1NDRjZWI4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOlsiYWNjb3VudCIsImZyb250ZW5kIl0sInN1YiI6IjZmZWY5NWI2LWJjNDUtNDczMi1iYzAzLWI4NDIyN2Q4MGE5OCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImJhY2tlbmQtZ2VzdGFvLW5vcm1hcyIsInNlc3Npb25fc3RhdGUiOiJlMmY0YTljNS01YzIwLTQwYzItYWUwZS02MzQ0YzAwMDliMjQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkdlc3RvciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfSwiZnJvbnRlbmQiOnsicm9sZXMiOlsiR2VzdG9yIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJ1c2VyX25hbWUiOiJnZXN0b3IiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJnZXN0b3IifQ.Hu0ontB7l0XvsQW19Oxxk4b4R6HqRVOa-iRGYoiQHkGOf5pnacj56EJZRmW4glwtICMj6ByjjmQmSwIVWv0mv88n-OK_ChPvVL_9Oi-ln1iNDNqs22gQCtMosEr6xCCaWIHr8FW-gjdg8AjaIDezbiY2_WDBcj2MK3UTox8SS7K6vc6UAul3A2uBKHTH3v1dMYL9pWtBuZMSms1AUGSdQoVJbdo5Ca5gECRILIYKBYeGm_UkB4D1cS48dZ34EWk2VW3NBt_XQ3iT-Xjo2lcscRKbqJNggBn-myM4l9IzMT-MtUHTEMzdG3vcuVoeV2x3_DJs87f39xFuxXrnf1pG7g",
-							"type": "string"
+			"name": "External",
+			"item": [
+				{
+					"name": "GetNormaMock",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8091/gestao-normas/v1/normas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8091",
-					"path": [
-						"gestao-normas",
-						"v1",
-						"normas"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Apagar Norma",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8091/gestao-normas/v1/normas/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8091",
-					"path": [
-						"gestao-normas",
-						"v1",
-						"normas",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Alterar Norma",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\":\"2\",    \n    \"titulo\":\"Teste 2!\",\n\t\"descricao\":\"Teste descricao\",\n    \"codigo\":\"142\",\n\t\"categoria\":\"ABNT\",\n\t\"data_inclusao\":\"2021-01-12\",\n\t\"data_publicacao\":\"2019-11-02\"    \n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8091/gestao-normas/v1/normas/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8091",
-					"path": [
-						"gestao-normas",
-						"v1",
-						"normas",
-						"3"
-					]
-				}
-			},
-			"response": []
+			],
+			"description": "APIs de sistemas externos"
 		},
 		{
 			"name": "Request an Access Token",

@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class GestaoNormasController {
 
-	@Value("${api.rest.endpoint.normas}") /// gestao-normas/v1/normas
+	@Value("${api.rest.endpoint.normas}")
 	private String url;
 	
 	private final HttpServletRequest request;
@@ -62,16 +62,15 @@ public class GestaoNormasController {
 		 * "add-user"; }
 		 */
 		norma.setAtualizada(Boolean.TRUE);
+		norma.setAtiva(Boolean.TRUE);
 
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(norma);
 
 			RestTemplate restTemplate = new RestTemplate();
-
-			HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
 			
-			HttpEntity<String> entity = new HttpEntity<>(json, headers);
+			HttpEntity<String> entity = new HttpEntity<>(json, WebHelper.getHeaderBearerAuth(request));
 
 			if (norma.getId() != null && norma.getId() > 0) {
 				Map<String, String> urlParams = new HashMap<String, String> ();
@@ -120,9 +119,7 @@ public class GestaoNormasController {
 
 		RestTemplate restTemplate = new RestTemplate();
 
-		HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
-
-		HttpEntity<String> entity = new HttpEntity<>("body", headers);
+		HttpEntity<String> entity = new HttpEntity<>("body", WebHelper.getHeaderBearerAuth(request));
 		
 		Map<String, String> urlParams = new HashMap<String, String> ();
 		urlParams.put("id", id);
@@ -135,7 +132,8 @@ public class GestaoNormasController {
 			
 			model.addAttribute("norma", dto);
 		} catch (Exception e) {
-			System.out.println(" exxxxxxxxxxxxxxxx");
+			log.error(e.getMessage());
+			model.addAttribute("errorMessage", "Ocorreu um erro");
 		}
 		return "normas/view";
 	}
@@ -147,9 +145,7 @@ public class GestaoNormasController {
 		log.info("GestaoNormasController.showFormAtualizacao ({})", id);
 		RestTemplate restTemplate = new RestTemplate();
 
-		HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
-
-		HttpEntity<String> entity = new HttpEntity<>("body", headers);
+		HttpEntity<String> entity = new HttpEntity<>("body", WebHelper.getHeaderBearerAuth(request));
 		
 		Map<String, String> urlParams = new HashMap<String, String> ();
 		urlParams.put("id", id);
@@ -161,9 +157,10 @@ public class GestaoNormasController {
 			NormaDTO dto = mapper.readValue( rp.getBody(), NormaDTO.class);
 			
 			model.addAttribute("norma", dto);
-			System.out.println("------------------>  " + dto);
+			
 		} catch (Exception e) {
-			System.out.println(" exxxxxxxxxxxxxxxx");
+			log.error(e.getMessage());
+			model.addAttribute("errorMessage", "Ocorreu um erro");
 		}
 		return "normas/cadastro";
 	}
@@ -178,10 +175,8 @@ public class GestaoNormasController {
 			String json = mapper.writeValueAsString(norma);
 
 			RestTemplate restTemplate = new RestTemplate();
-
-			HttpHeaders headers = WebHelper.getHeaderBearerAuth(request);
 			
-			HttpEntity<String> entity = new HttpEntity<>(json, headers);
+			HttpEntity<String> entity = new HttpEntity<>(json, WebHelper.getHeaderBearerAuth(request));
 
 			ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.PUT, entity, String.class);
 
@@ -217,14 +212,4 @@ public class GestaoNormasController {
 		return showFormListar(model);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

@@ -33,22 +33,13 @@ public class Norma {
     
     @Column(name = "numero")
     private String numero;
+
+    @Column(name = "link")
+    private String link;
     
     @Column(name = "versao")
     private Integer versao;
-    
-    @Column(name = "codigo")
-    private String codigo;
-
-    @Column(name = "categoria")
-    private String categoria;
- 
-    @Column(name = "dataInclusao")    
-    private String dataInclusao;
-    
-    @Column(name = "dataPublicacao")    
-    private String dataPublicacao;
-    
+        
     @Column(name = "atualizada")    
     private Boolean atualizada;
     

@@ -14,11 +14,8 @@ public class NormaDTO {
     private String descricao;    
     private String orgao;    
     private String numero;    
+    private String link;    
     private Integer versao;    
-    private String categoria;
-    private String codigo;    
-    private String dataInclusao;
-    private String dataPublicacao;
     private Boolean atualizada; 
     private Boolean ativa;
 }

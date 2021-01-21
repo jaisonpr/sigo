@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 import br.com.indtexbr.backend.gestaonormas.service.NormaService;
 import lombok.extern.slf4j.Slf4j;
@@ -40,9 +37,9 @@ public class GestaoNormasController {
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<NormaDTO> addNorma(@RequestBody @Valid NormaDTO NormaDTO) {
-		log.info("GestaoNormasController.adicionarNorma ({})", NormaDTO);		
-		NormaDTO standard = normaService.criarNorma(NormaDTO);
+	public ResponseEntity<NormaDTO> addNorma(@RequestBody @Valid NormaDTO normaDTO) {
+		log.info("GestaoNormasController.adicionarNorma ({})", normaDTO);		
+		NormaDTO standard = normaService.criarNorma(normaDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(standard);
 	}
 	
@@ -54,9 +51,10 @@ public class GestaoNormasController {
 	}
 	
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
-    public ResponseEntity<NormaDTO> updateNorma(@PathVariable Integer id, @RequestBody @Valid NormaDTO NormaDTO) {
-		log.info("GestaoNormasController.updateNorma ({})");        
-        NormaDTO dto = normaService.alterarNorma(NormaDTO);
+    public ResponseEntity<NormaDTO> updateNorma(@PathVariable Integer id, @RequestBody @Valid NormaDTO normaDTO) {
+		log.info("GestaoNormasController.updateNorma ({})");  
+		normaDTO.setId(id);
+        NormaDTO dto = normaService.alterarNorma(normaDTO);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 

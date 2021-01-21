@@ -2,7 +2,6 @@ package br.com.indtexbr.backend.gestaoprocessos.task;
 
 import java.io.IOException;
 import java.net.URI;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +32,6 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class AtualizacaoNormaTask {
 
-	private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-
 	@Value("${api.rest.endpoint.normas.mock}")
 	private String URL_MOCK_SERVER;
 
@@ -60,23 +57,33 @@ public class AtualizacaoNormaTask {
 			
 			NormaMock mock = getNormaMock(norma.getOrgao(), norma.getNumero());
 			
-			if ( Integer.parseInt(mock.getVersao()) > norma.getVersao()) {
-				log.info("DESATUALIZADA");
+			if (mock != null) {
+				if ( Integer.parseInt(mock.getVersao()) > norma.getVersao()) {
+					log.info("DESATUALIZADA");
+					
+					norma.setAtualizada(false);
+					enviarNorma(norma);
+				}
 				
-				norma.setAtualizada(false);
-				enviarNorma(norma);
-			}
-			
-			if ( norma.getAtiva() && mock.getStatus()[0].equals("Cancelada")) { // ['Em vigor', 'Cancelada']
-				log.info("CANCELADA");
-				
-				norma.setAtiva(false);
-				enviarNorma(norma);
+				if ( norma.getAtiva() && mock.getStatus()[0].equals("Cancelada")) { // ['Em vigor', 'Cancelada']
+					log.info("CANCELADA");
+					
+					norma.setAtiva(false);
+					enviarNorma(norma);
+				}
 			}
 		}
 	}
-	
+
+	/**
+	* Envia a norma alterada para o servidor de Normas (PUT) 
+	*
+	* @author  jaisonpr
+	* @version 1.0
+	* @since   2021-01-20 
+	*/
 	private void enviarNorma(NormaDTO norma) {
+		log.info("AtualizacaoNormaTask.enviarNorma ({})", norma);
 
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -88,7 +95,7 @@ public class AtualizacaoNormaTask {
 			
 			Map<String, String> urlParams = new HashMap<String, String> ();
 			urlParams.put("id", norma.getId().toString());
-			ResponseEntity<String> rp = restTemplate.exchange(URL_GESTAO_NORMAS + "/{id}", HttpMethod.PUT, entity, String.class, urlParams);
+			restTemplate.exchange(URL_GESTAO_NORMAS + "/{id}", HttpMethod.PUT, entity, String.class, urlParams);
 
 		} catch (IOException e) {
 			log.error(e.getMessage(), e);
@@ -104,7 +111,7 @@ public class AtualizacaoNormaTask {
 	* @since   2021-01-20 
 	*/
 	private NormaMock getNormaMock(String orgao, String numero) {
-		log.info("AtualizacaoNormaTask.getNormaMock");
+		log.info("AtualizacaoNormaTask.getNormaMock ({}, {})", orgao, numero);
 		
 		NormaMock normaMock = null;
 		try {
@@ -119,11 +126,14 @@ public class AtualizacaoNormaTask {
 			List<String> response = restTemplate.getForObject(uri, List.class);
 
 			ObjectMapper mapper = new ObjectMapper();
-			List<NormaMock> array = mapper.convertValue(response, new TypeReference<List<NormaMock>>() {});
+			List<NormaMock> normas = mapper.convertValue(response, new TypeReference<List<NormaMock>>() {});
 
-			normaMock = array.get(0);
+			if (normas != null && normas.size() > 0) {
+				normaMock = normas.get(0);
+			}
 
-			TimeUnit.SECONDS.sleep(5);
+			//Para simular o tempo de resposta da consulta
+			TimeUnit.SECONDS.sleep(3);
 
 		} catch (InterruptedException ex) {
 			log.error("Ran into an error {}", ex);
@@ -147,6 +157,7 @@ public class AtualizacaoNormaTask {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpEntity<String> entity = new HttpEntity<String>("<body>", getHeaderAccessToken());
 
+		@SuppressWarnings("rawtypes")
 		ResponseEntity<List> rp = restTemplate.exchange(URL_GESTAO_NORMAS, HttpMethod.GET, entity, List.class);
 
 		ObjectMapper mapper = new ObjectMapper();

@@ -17,17 +17,42 @@
 		<div th:if="${successMessage}" th:utext="${successMessage}" class="alert alert-success" role="alert" />
 	        
 	        
-	    <div class="row row-content">
+	    <div class="row">
             <div class="col-12">
-            	<h3>Cadastro de Norma</h3>
-            </div>    
-            <div class="col-12 col-md-9">
+            	<h2>Cadastro de Norma</h2>
+            </div>   
+		</div>
+       	<div class="row  row-content">
+            <div class="col-12 ">
             	<form action="#" th:object="${norma}" >                        
+                                                   
                     <div class="form-group row">
-                        <label for="firstname" class="col-md-2 col-form-label">Título</label>
-                        <div class="col-md-10">                            
-	     					<span th:text="*{titulo}"></span>
-                        </div>
+                    	<span class="col-md-2">Título</span>
+						<span class="col-md-10" th:text="*{titulo}"></span>
+                    </div>                        
+                    <div class="form-group row">
+                    	<span class="col-md-2">Órgão</span>
+						<span class="col-md-10" th:text="*{orgao}"></span>
+                    </div>                        
+                    <div class="form-group row">
+                    	<span class="col-md-2">Número</span>
+						<span class="col-md-10" th:text="*{numero}"></span>
+                    </div>                        
+                    <div class="form-group row">
+                    	<span class="col-md-2">Versão</span>
+						<span class="col-md-10" th:text="*{versao}"></span>
+                    </div>                        
+                    <div class="form-group row">
+                    	<span class="col-md-2">Link</span>
+						<span class="col-md-10" th:text="*{link}"></span>
+                    </div>                        
+                    <div class="form-group row">
+                    	<span th:if="${norma.atualizada}" class="col-md-12" style="color: green"><i class="fas fa-calendar-check"> Atualizada</i></span>
+                    	<span th:unless="${norma.atualizada}" class="col-md-12" style="color: red"><i class="fas fa-calendar-check"> Desatualizada</i></span>
+                    </div>                        
+                    <div class="form-group row">
+                    	<span th:if="${norma.ativa}" class="col-md-12" style="color: green"><i class="fas fa-calendar-check"> Ativa</i></span>
+                    	<span th:unless="${norma.ativa}" class="col-md-12" style="color: red"><i class="fas fa-calendar-check"> Inativa</i></span>
                     </div>
 
                     <div class="form-group row">
