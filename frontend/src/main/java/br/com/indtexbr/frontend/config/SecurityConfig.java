@@ -76,6 +76,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/home").hasRole("Gestor")
             .antMatchers("/gestao-normas").hasRole("Gestor")
+            .antMatchers("/gestao-consultorias").hasRole("Gestor")
             .anyRequest().permitAll();
     }
 }

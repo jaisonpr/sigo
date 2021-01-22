@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>SIGO - Sistema Integrado de Gestão e Operação</title>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header th:insert="fragments/general.html :: header"> </header>
+
+	<main class="container">
+		<div th:if="${errorMessage}" th:utext="${errorMessage}" class="alert alert-danger" role="alert" />
+		<div th:if="${alertMessage}" th:utext="${alertMessage}" class="alert alert-warning" role="alert" />
+		<div th:if="${successMessage}" th:utext="${successMessage}" class="alert alert-success" role="alert" />
+
+		<div class="row ">
+			<div class="col-12">
+            	<h2>Consulta de Consultorias e Assessorias</h2>
+            </div>   
+		</div>
+       	<div class="row  row-content">
+            <div class="col-12">
+				<div class="table-responsive-lg" th:if="${not #lists.isEmpty(consultorias)}">
+
+					<table class="table table-striped ">
+	 						<thead>
+							<tr>
+								<th scope="col">Nome</th>
+								<th scope="col">Área</th>
+								<th scope="col">Ações</th>
+							</tr>
+	 						</thead>
+	 						<tbody>
+							<tr th:each="consultoria : ${consultorias}">
+								<td th:text="${consultoria.nome}" />
+								<td th:text="${consultoria.area}" />
+					            <td>	
+					            	<a th:href="@{/gestao-consultorias/visualizar/(id=${consultoria.id})}" class="btn btn-info"><i class="far fa-eye"></i></a>
+					            	<a th:href="@{/gestao-consultorias/atualizar/(id=${consultoria.id})}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+					            	<a th:href="@{/gestao-consultorias/remover/(id=${consultoria.id})}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+					            </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<div th:replace="fragments/general.html :: footer"></div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
