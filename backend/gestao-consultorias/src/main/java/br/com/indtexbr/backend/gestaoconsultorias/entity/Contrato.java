@@ -1,6 +1,9 @@
 package br.com.indtexbr.backend.gestaoconsultorias.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,17 +18,23 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "consultorias")
-public class Consultoria {
+@Table(name = "contratos")
+public class Contrato {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "nome")
-    private String nome;
+	@Column(name = "id_contrato")
+    private Integer idContrato;
+	
+	@Column(name = "id_consultoria")
+    private Integer idConsultoria;
 
-    @Column(name = "area")
-    private String area;
-    
+	@Column(name = "id_contrato_externo")
+    private Integer idContratoExterno;
+	
+	@ElementCollection
+	@Column(name = "contrato_normas")
+    private Set<Integer> normas;
 }

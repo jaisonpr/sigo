@@ -14,7 +14,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -29,7 +28,7 @@ import br.com.indtexbr.backend.gestaoprocessos.model.NormaMock;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component
+//@Component
 public class AtualizacaoNormaTask {
 
 	@Value("${api.rest.endpoint.normas.mock}")
@@ -48,7 +47,7 @@ public class AtualizacaoNormaTask {
 	* @version 1.0
 	* @since   2021-01-20 
 	*/
-	@Scheduled(fixedDelayString = "${fixedDelay.in.milliseconds}")
+	@Scheduled(fixedDelayString = "${task.norma.fixedDelay.in.milliseconds}")
 	public void verifcarListaNormas() {
 		log.info("AtualizacaoNormaTask.verifcarListaNormas");
 		

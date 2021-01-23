@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class GestaogestaoConsultoriasApplication {
+public class GestaoConsultoriasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GestaogestaoConsultoriasApplication.class, args);
+		SpringApplication.run(GestaoConsultoriasApplication.class, args);
 	}
 }

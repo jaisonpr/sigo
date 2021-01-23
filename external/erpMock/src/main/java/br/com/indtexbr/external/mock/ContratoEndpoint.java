@@ -6,6 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import io.spring.guides.gs_producing_web_service.Contrato;
+import io.spring.guides.gs_producing_web_service.GetAllContratosRequest;
+import io.spring.guides.gs_producing_web_service.GetAllContratosResponse;
 import io.spring.guides.gs_producing_web_service.GetContratoRequest;
 import io.spring.guides.gs_producing_web_service.GetContratoResponse;
 
@@ -27,6 +30,16 @@ public class ContratoEndpoint {
 		GetContratoResponse response = new GetContratoResponse();
 		response.setContrato(repository.findContrato(request.getId()));
 
+		return response;
+	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllContratosRequest")
+	@ResponsePayload
+	public GetAllContratosResponse getContrato(@RequestPayload GetAllContratosRequest request) {
+		GetAllContratosResponse response = new GetAllContratosResponse();
+		for (Contrato contrato: repository.findAll()) {
+			response.getContratos().add(contrato);
+		}		
 		return response;
 	}
 }

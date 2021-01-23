@@ -14,6 +14,7 @@ keycloak:
       - name: 
         patterns:
         - /gestao-consultorias/*
+        - /gestao-contratos/*
 
 logging:
   level:

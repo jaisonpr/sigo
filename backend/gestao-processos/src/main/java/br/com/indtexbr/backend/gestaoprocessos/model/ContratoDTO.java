@@ -1,5 +1,7 @@
 package br.com.indtexbr.backend.gestaoprocessos.model;
 
+import java.util.Set;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class ContratoDTO {
 
 	private Integer id;
-	private String texto;
-	private String area;
+    private Integer idConsultoria;
+    private Integer idContratoExterno;
+    private Set<Integer> normas;
 }

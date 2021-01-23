@@ -18,50 +18,79 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.indtexbr.backend.gestaoconsultorias.dto.ConsultoriaDTO;
+import br.com.indtexbr.backend.gestaoconsultorias.dto.ContratoDTO;
 import br.com.indtexbr.backend.gestaoconsultorias.service.ConsultoriaService;
+import br.com.indtexbr.backend.gestaoconsultorias.service.ContratosService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/gestao-consultorias/v1/Consultorias")
-public class GestaogestaoConsultoriasController {
+@RequestMapping("/gestao-consultorias/v1/consultorias")
+public class GestaoConsultoriasController {
 	
     @Autowired
-    private ConsultoriaService ConsultoriaService;
+    private ConsultoriaService consultoriaService;
+    
+    @Autowired
+    private ContratosService contratoService;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ConsultoriaDTO>> getConsultorias() {
-		log.info("GestaogestaoConsultoriasController.getConsultorias");        
-		List<ConsultoriaDTO> Consultorias = ConsultoriaService.listarConsultorias();
-        return ResponseEntity.status(HttpStatus.OK).body(Consultorias);
+		log.info("GestaoConsultoriasController.getConsultorias");    
+        return ResponseEntity.status(HttpStatus.OK).body( consultoriaService.listarConsultorias());
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ConsultoriaDTO> addConsultoria(@RequestBody @Valid ConsultoriaDTO ConsultoriaDTO) {
-		log.info("GestaogestaoConsultoriasController.adicionarConsultoria ({})", ConsultoriaDTO);		
-		ConsultoriaDTO standard = ConsultoriaService.criarConsultoria(ConsultoriaDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(standard);
+		log.info("GestaoConsultoriasController.adicionarConsultoria ({})", ConsultoriaDTO);	
+        return ResponseEntity.status(HttpStatus.CREATED).body( consultoriaService.criarConsultoria(ConsultoriaDTO));
 	}
 	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ConsultoriaDTO> getConsultoria(@PathVariable Integer id) {
-		log.info("GestaogestaoConsultoriasController.getConsultorias");        
-		ConsultoriaDTO dto = ConsultoriaService.obterConsultoria(id);
-        return ResponseEntity.status(HttpStatus.OK).body(dto);
+		log.info("GestaoConsultoriasController.getConsultorias");  
+        return ResponseEntity.status(HttpStatus.OK).body(consultoriaService.obterConsultoria(id));
 	}
 	
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
-    public ResponseEntity<ConsultoriaDTO> updateConsultoria(@PathVariable Integer id, @RequestBody @Valid ConsultoriaDTO ConsultoriaDTO) {
-		log.info("GestaogestaoConsultoriasController.updateConsultoria ({})");  
-		ConsultoriaDTO.setId(id);
-        ConsultoriaDTO dto = ConsultoriaService.alterarConsultoria(ConsultoriaDTO);
+    public ResponseEntity<ConsultoriaDTO> updateConsultoria(@PathVariable Integer id, @RequestBody @Valid ConsultoriaDTO consultoriaDTO) {
+		log.info("GestaoConsultoriasController.updateConsultoria ({})");  
+		consultoriaDTO.setId(id);
+        ConsultoriaDTO dto = consultoriaService.alterarConsultoria(consultoriaDTO);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
     public ResponseEntity<ConsultoriaDTO> deleteConsultoria(@PathVariable Integer id) {
-		log.info("GestaogestaoConsultoriasController.deleteConsultoria ({})", id);        
-        ConsultoriaService.excluirConsultoria(id);
+		log.info("GestaoConsultoriasController.deleteConsultoria ({})", id);        
+        consultoriaService.excluirConsultoria(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+    
+    
+    // Contratos
+    
+
+    @GetMapping(value = "/contratos/origem/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ContratoDTO> getContratoOrigem(@PathVariable Integer id) {
+		log.info("GestaoContratosController.getContratoOrigem ({})", id);  
+		try {
+	        return ResponseEntity.status(HttpStatus.OK).body(contratoService.obterContratoOrigem(id));
+		}catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.OK).body(null);
+		}
+	}
+    
+	@PostMapping(value = "/contratos", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ContratoDTO> addContrato(@RequestBody @Valid ContratoDTO contratoDTO) {
+		log.info("GestaoContratosController.adicionarContrato ({})", contratoDTO);	
+        return ResponseEntity.status(HttpStatus.CREATED).body( contratoService.criarContrato(contratoDTO));
+	}
+	
+
+	@GetMapping(value = "/contratos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<ContratoDTO>> getContratos() {
+		log.info("GestaoContratosController.getContratos");    
+        return ResponseEntity.status(HttpStatus.OK).body( contratoService.listarContratos());
+	}
 }

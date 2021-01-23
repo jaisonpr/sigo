@@ -62,9 +62,6 @@ public class GestaoConsultoriasController {
 		 * "add-user"; }
 		 */
 		
-		System.out.println(consultoria.getNome());
-		System.out.println(consultoria.getArea());
-
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(consultoria);
@@ -212,5 +209,4 @@ public class GestaoConsultoriasController {
 		
 		return showFormListar(model);
 	}
-	
 }
