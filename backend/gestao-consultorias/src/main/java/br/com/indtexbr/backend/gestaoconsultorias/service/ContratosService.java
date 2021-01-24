@@ -12,4 +12,5 @@ public interface ContratosService {
 	ContratoDTO obterContrato(Integer id);
 	ContratoDTO obterContratoOrigem(Integer id);
 	void excluirContrato(Integer id);
+	int obterQuantidadeNovos();
 }

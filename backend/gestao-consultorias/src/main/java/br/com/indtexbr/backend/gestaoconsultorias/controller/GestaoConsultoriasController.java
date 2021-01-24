@@ -93,15 +93,21 @@ public class GestaoConsultoriasController {
         return ResponseEntity.status(HttpStatus.OK).body( contratoService.alterarContrato(contratoDTO));
 	}
 	
-	@GetMapping(value = "/contratos", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ContratoDTO>> getContratos() {
-		log.info("GestaoContratosController.getContratos");    
-        return ResponseEntity.status(HttpStatus.OK).body( contratoService.listarContratos());
+	@GetMapping(value = "/contratos/novos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Integer> getQtdContratosNovos() {
+		log.info("GestaoContratosController.getQtdContratosNovos");    
+        return ResponseEntity.status(HttpStatus.OK).body( contratoService.obterQuantidadeNovos());
 	}
 
 	@GetMapping(value = "/contratos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ContratoDTO> getContrato(@PathVariable Integer id) {
 		log.info("GestaoContratosController.getContratos");    
         return ResponseEntity.status(HttpStatus.OK).body( contratoService.obterContrato(id));
+	}
+
+	@GetMapping(value = "/contratos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<ContratoDTO>> getContratos() {
+		log.info("GestaoContratosController.getContratos");    
+        return ResponseEntity.status(HttpStatus.OK).body( contratoService.listarContratos());
 	}
 }

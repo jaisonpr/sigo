@@ -16,6 +16,7 @@
 		<div th:if="${errorMessage}" th:utext="${errorMessage}" class="alert alert-danger" role="alert" />
 		<div th:if="${alertMessage}" th:utext="${alertMessage}" class="alert alert-warning" role="alert" />
 		<div th:if="${successMessage}" th:utext="${successMessage}" class="alert alert-success" role="alert" />
+		<div th:if="${infoMessage}" th:utext="${infoMessage}" class="alert alert-dark" role="alert" />
 
 		<div class="row ">
 			<div class="col-12">
@@ -24,7 +25,7 @@
 		</div>
        	<div class="row  row-content">
             <div class="col-12">
-				<div class="table-responsive-lg" th:if="${not #lists.isEmpty(normas)}">
+				<div class="table-responsive-lg" >
 
 					<table class="table table-striped ">
 	 						<thead>
@@ -36,15 +37,15 @@
 								<th scope="col">Ações</th>
 							</tr>
 	 						</thead>
-	 						<tbody>
+	 						<tbody th:if="${not #lists.isEmpty(normas)}">
 							<tr th:each="norma : ${normas}">
 								<td th:text="${norma.titulo}" />
 								<td th:text="${norma.orgao}" />
 								<td th:text="${norma.numero}" />
 								<td th:text="${norma.versao}" />
 					            <td>		
-					            	<a th:if="${not norma.atualizada}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="A Norma está DESATUALIZADA com relação ao Catálogo"><i class="fas fa-bolt"></i></a>		            	
-					            	<a th:if="${not norma.ativa}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="A Norma está INATIVA no Catálogo"><i class="fas fa-bolt"></i></a>
+					            	<a th:if="${not norma.atualizada}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="A Norma DESATUALIZADA com relação ao Catálogo de Normas"><i class="fas fa-bolt"></i></a>		            	
+					            	<a th:if="${not norma.ativa}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="A Norma INATIVA no Catálogo de Normas"><i class="fas fa-bolt"></i></a>
 					            	<a th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Visualizar os dados da Norma"><i class="far fa-eye"></i></a>
 					            	<a th:href="@{/gestao-normas/atualizar/(id=${norma.id})}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Alterar os dados da Norma"><i class="fas fa-edit"></i></a>
 					            	<a th:href="@{/gestao-normas/remover/(id=${norma.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir a Norma"><i class="far fa-trash-alt"></i></a>

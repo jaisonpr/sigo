@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 public class GestaoNormasController {
 
 	@Value("${api.rest.endpoint.normas}")
-	private String url;
+	private String URL_NORMAS;
 	
 	private final HttpServletRequest request;
 
@@ -75,11 +75,11 @@ public class GestaoNormasController {
 			if (norma.getId() != null && norma.getId() > 0) {
 				Map<String, String> urlParams = new HashMap<String, String> ();
 				urlParams.put("id", norma.getId().toString());
-				ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.PUT, entity, String.class, urlParams);
+				ResponseEntity<String> rp = restTemplate.exchange(URL_NORMAS + "/{id}", HttpMethod.PUT, entity, String.class, urlParams);
 				model.addAttribute("successMessage", "Norma alterada com sucesso");
 				
 			} else {
-				ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
+				ResponseEntity<String> rp = restTemplate.exchange(URL_NORMAS, HttpMethod.POST, entity, String.class);
 				model.addAttribute("successMessage", "Norma adicionada com sucesso");
 			} 
 			
@@ -102,13 +102,16 @@ public class GestaoNormasController {
 
 		HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
-		ResponseEntity<List> rp = restTemplate.exchange(url, HttpMethod.GET, entity, List.class);
+		ResponseEntity<List> rp = restTemplate.exchange(URL_NORMAS, HttpMethod.GET, entity, List.class);
 
 		ObjectMapper mapper = new ObjectMapper();
 
 		List<NormaDTO> array = mapper.convertValue(rp.getBody(), new TypeReference<List<NormaDTO>>(){});
 		
 		model.addAttribute("normas", array);
+		if (array.size() == 0) {
+			model.addAttribute("infoMessage", "Não exitem normas cadastradas");
+		}
 
 		return "normas/lista";
 	}
@@ -124,7 +127,7 @@ public class GestaoNormasController {
 		Map<String, String> urlParams = new HashMap<String, String> ();
 		urlParams.put("id", id);
 					
-		ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.GET, entity, String.class, urlParams);
+		ResponseEntity<String> rp = restTemplate.exchange(URL_NORMAS + "/{id}", HttpMethod.GET, entity, String.class, urlParams);
 			
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -150,7 +153,7 @@ public class GestaoNormasController {
 		Map<String, String> urlParams = new HashMap<String, String> ();
 		urlParams.put("id", id);
 					
-		ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.GET, entity, String.class, urlParams);
+		ResponseEntity<String> rp = restTemplate.exchange(URL_NORMAS + "/{id}", HttpMethod.GET, entity, String.class, urlParams);
 			
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -178,7 +181,7 @@ public class GestaoNormasController {
 			
 			HttpEntity<String> entity = new HttpEntity<>(json, WebHelper.getHeaderBearerAuth(request));
 
-			ResponseEntity<String> rp = restTemplate.exchange(url, HttpMethod.PUT, entity, String.class);
+			ResponseEntity<String> rp = restTemplate.exchange(URL_NORMAS, HttpMethod.PUT, entity, String.class);
 
 			model.addAttribute("successMessage", "Norma atualizada com sucesso");
 
@@ -205,11 +208,12 @@ public class GestaoNormasController {
 		Map<String, String> urlParams = new HashMap<String, String> ();
 		urlParams.put("id", id);
 					
-		ResponseEntity<String> rp = restTemplate.exchange(url + "/{id}", HttpMethod.DELETE, entity, String.class, urlParams);
+		ResponseEntity<String> rp = restTemplate.exchange(URL_NORMAS + "/{id}", HttpMethod.DELETE, entity, String.class, urlParams);
 			
 		model.addAttribute("successMessage", "Norma removida com sucesso");
 		
 		return showFormListar(model);
 	}
+	
 	
 }

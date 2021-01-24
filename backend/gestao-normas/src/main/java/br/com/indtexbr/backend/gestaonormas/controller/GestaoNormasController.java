@@ -1,5 +1,6 @@
 package br.com.indtexbr.backend.gestaonormas.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -48,6 +49,21 @@ public class GestaoNormasController {
 		log.info("GestaoNormasController.getNormas");        
 		NormaDTO dto = normaService.obterNorma(id);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
+	}
+	
+	@GetMapping(value = "/status", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<HashMap<String, Integer> > getStatusNormas() {
+		log.info("GestaoNormasController.getStatusNormas");        
+		int qtdDesatualizadas = normaService.obterQuantidadeDesatualizadas();
+		int qtdInativas = normaService.obterQuantidadeInativas();
+		
+		log.info("GestaoNormasController.getStatusNormas : qtdDesatualizadas = {} e qtdInativas = {}", qtdDesatualizadas, qtdInativas); 
+		
+		HashMap<String, Integer> qtds = new HashMap<String, Integer>();
+		qtds.put("QuantidadeInativas", qtdInativas);
+		qtds.put("QuantidadeDesatualizadas", qtdDesatualizadas);
+		
+        return ResponseEntity.status(HttpStatus.OK).body(qtds);
 	}
 	
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    

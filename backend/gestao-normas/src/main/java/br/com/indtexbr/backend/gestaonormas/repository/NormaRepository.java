@@ -8,4 +8,6 @@ import br.com.indtexbr.backend.gestaonormas.entity.Norma;
 @Repository
 public interface NormaRepository extends JpaRepository<Norma, Integer> {
 
+	public int countByAtualizadaFalse();
+	public int countByAtivaFalse();
 }

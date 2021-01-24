@@ -37,10 +37,10 @@ public class ContratosServiceImpl implements ContratosService {
 	public List<ContratoDTO> listarContratos() {
 		log.info("ContratoServiceImpl.listarContratos ({})");
 
-		List<Contrato> normas = repository.findAll();
+		List<Contrato> contratos = repository.findAll();
 
-		List<ContratoDTO> responseDTOs = normas.stream()
-				.map(standardEntity -> modelMapper.map(standardEntity, ContratoDTO.class))
+		List<ContratoDTO> responseDTOs = contratos.stream()
+				.map(entity -> modelMapper.map(entity, ContratoDTO.class))
 					.collect(Collectors.toList());
 
 		return responseDTOs;
@@ -84,5 +84,10 @@ public class ContratosServiceImpl implements ContratosService {
 		log.info("ContratoServiceImpl.obterContratoOrigem ({})", entity);
 		
 		return modelMapper.map(entity, ContratoDTO.class);
+	}
+
+	@Override
+	public int obterQuantidadeNovos() {
+		return repository.countByIdConsultoriaNull();
 	}
 }

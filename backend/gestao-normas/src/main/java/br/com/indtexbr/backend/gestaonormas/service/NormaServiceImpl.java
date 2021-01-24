@@ -78,4 +78,14 @@ public class NormaServiceImpl implements NormaService {
 		
 		repository.delete(entity);
 	}
+
+	@Override
+	public int obterQuantidadeDesatualizadas() {
+		return repository.countByAtualizadaFalse();
+	}
+
+	@Override
+	public int obterQuantidadeInativas() {
+		return repository.countByAtivaFalse();
+	}
 }

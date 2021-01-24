@@ -138,6 +138,9 @@ public class GestaoContratosController {
 			preencherOutrasEntidades(contratoDTO);
 		}
 		model.addAttribute("contratos", contratos);
+		if (contratos.size() == 0) {
+			model.addAttribute("infoMessage", "Não exitem Contratos cadastrados");
+		}
 
 		return "contratos/lista";
 	}
@@ -269,17 +272,23 @@ public class GestaoContratosController {
 	}
 	
 	private void preencherOutrasEntidades(ContratoDTO contratoDTO) {
-		if (contratoDTO.getNormas() != null) {
-			String normasFormatado = "";				
+
+		String normasFormatado = "";	
+		if (contratoDTO.getNormas() != null) {			
 			for (Integer idNorma: contratoDTO.getNormas()) {
 				NormaDTO normaDTO = getNorma(idNorma);
 				normasFormatado += normaDTO.getOrgao() +" "+ normaDTO.getNumero();
 			}
 			contratoDTO.setNormasFormatado(normasFormatado);
+		} 
+		if (normasFormatado.equals("")) {
+			contratoDTO.setNormasFormatado("-- não associado --");
 		}
 		if (contratoDTO.getIdConsultoria() != null) {
 			ConsultoriaDTO consultoriaDTO = getConsultoria(contratoDTO.getIdConsultoria());
 			contratoDTO.setConsultoria(consultoriaDTO.getNome());
+		} else {
+			contratoDTO.setConsultoria("-- não associado --");
 		}
 	}
 }
