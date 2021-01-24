@@ -30,6 +30,13 @@ import br.com.indtexbr.frontend.dto.NormaDTO;
 import br.com.indtexbr.frontend.helper.WebHelper;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+* Define os mapeamentos das URIs
+*
+* @author  jaisonpr
+* @version 1.0
+* @since   2021-01-24 
+*/
 @Slf4j
 @Controller
 public class GestaoNormasController {

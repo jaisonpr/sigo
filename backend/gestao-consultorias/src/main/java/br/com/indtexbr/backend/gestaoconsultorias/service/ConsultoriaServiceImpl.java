@@ -37,10 +37,8 @@ public class ConsultoriaServiceImpl implements ConsultoriaService {
 	public List<ConsultoriaDTO> listarConsultorias() {
 		log.info("ConsultoriaServiceImpl.listarConsultorias ({})");
 
-		List<Consultoria> normas = repository.findAll();
-
-		List<ConsultoriaDTO> responseDTOs = normas.stream()
-				.map(standardEntity -> modelMapper.map(standardEntity, ConsultoriaDTO.class))
+		List<ConsultoriaDTO> responseDTOs = repository.findAll().stream()
+				.map(entity -> modelMapper.map(entity, ConsultoriaDTO.class))
 					.collect(Collectors.toList());
 
 		return responseDTOs;

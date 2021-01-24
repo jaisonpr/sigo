@@ -18,18 +18,10 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     /**
-     * Registers the KeycloakAuthenticationProvider with the authentication manager.
-     *
-     * Since Spring Security requires that role names start with "ROLE_",
-     * a SimpleAuthorityMapper is used to instruct the KeycloakAuthenticationProvider
-     * to insert the "ROLE_" prefix.
-     *
-     * e.g. Librarian -> ROLE_Librarian
-     *
-     * Should you prefer to have the role all in uppercase, you can instruct
-     * the SimpleAuthorityMapper to convert it by calling:
-     * {@code grantedAuthorityMapper.setConvertToUpperCase(true); }.
-     * The result will be: Librarian -> ROLE_LIBRARIAN.
+     * Registra o KeycloakAuthenticationProvider com o gerenciador de autenticação.
+     * Visto que Spring Security requer que os nomes das funções comecem com "ROLE_",
+     * usa um SimpleAuthorityMapper para instruir o KeycloakAuthenticationProvider
+     * a inserir o prefixo "ROLE_" 
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) {
@@ -42,10 +34,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     }
 
     /**
-     * Defines the session authentication strategy.
-     *
-     * RegisterSessionAuthenticationStrategy is used because this is a public application
-     * from the Keycloak point of view.
+     * Define a estratégia de autenticação da sessão.
      */
     @Bean
     @Override
@@ -54,10 +43,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     }
 
     /**
-     * Define an HttpSessionManager bean only if missing.
-     *
-     * This is necessary because since Spring Boot 2.1.0, spring.main.allow-bean-definition-overriding
-     * is disabled by default.
+     * Define um HttpSessionManager bean se ausente.
      */
     @Bean
     @Override
@@ -67,7 +53,9 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     }
 
     /**
-     * Define security constraints for the application resources.
+     * Defina as restrições de segurança para os recursos do aplicativo.
+     * Usando apenas a Role "Gestor"
+     * FIXME usar outras roles em PRODUÇÃO
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {

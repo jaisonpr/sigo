@@ -88,6 +88,7 @@ public class ContratosServiceImpl implements ContratosService {
 
 	@Override
 	public int obterQuantidadeNovos() {
+		log.info("ContratoServiceImpl.obterQuantidadeNovos ");
 		return repository.countByIdConsultoriaNull();
 	}
 }

@@ -22,6 +22,14 @@ import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 import br.com.indtexbr.backend.gestaonormas.service.NormaService;
 import lombok.extern.slf4j.Slf4j;
 
+
+/**
+* Define os mapeamentos das URIs
+*
+* @author  jaisonpr
+* @version 1.0
+* @since   2021-01-24 
+*/
 @Slf4j
 @RestController
 @RequestMapping("/gestao-normas/v1/normas")
@@ -39,16 +47,14 @@ public class GestaoNormasController {
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<NormaDTO> addNorma(@RequestBody @Valid NormaDTO normaDTO) {
-		log.info("GestaoNormasController.adicionarNorma ({})", normaDTO);		
-		NormaDTO standard = normaService.criarNorma(normaDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(standard);
+		log.info("GestaoNormasController.adicionarNorma ({})", normaDTO);	
+        return ResponseEntity.status(HttpStatus.CREATED).body( normaService.criarNorma(normaDTO));
 	}
 	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<NormaDTO> getNorma(@PathVariable Integer id) {
-		log.info("GestaoNormasController.getNormas");        
-		NormaDTO dto = normaService.obterNorma(id);
-        return ResponseEntity.status(HttpStatus.OK).body(dto);
+		log.info("GestaoNormasController.getNormas");    
+        return ResponseEntity.status(HttpStatus.OK).body( normaService.obterNorma(id));
 	}
 	
 	@GetMapping(value = "/status", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -70,8 +76,7 @@ public class GestaoNormasController {
     public ResponseEntity<NormaDTO> updateNorma(@PathVariable Integer id, @RequestBody @Valid NormaDTO normaDTO) {
 		log.info("GestaoNormasController.updateNorma ({})");  
 		normaDTO.setId(id);
-        NormaDTO dto = normaService.alterarNorma(normaDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(dto);
+        return ResponseEntity.status(HttpStatus.OK).body( normaService.alterarNorma(normaDTO));
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    

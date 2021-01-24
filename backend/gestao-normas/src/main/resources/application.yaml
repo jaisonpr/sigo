@@ -10,7 +10,6 @@ keycloak:
   security-constraints:
     - auth-roles:
       - Gestor
-      - Usuario
       security-collections:
       - name: 
         patterns:

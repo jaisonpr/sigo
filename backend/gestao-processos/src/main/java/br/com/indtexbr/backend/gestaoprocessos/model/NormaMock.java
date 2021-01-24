@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class NormaMock {
+	
 	private String _id;
 	private String orgao;
 	private String numero;

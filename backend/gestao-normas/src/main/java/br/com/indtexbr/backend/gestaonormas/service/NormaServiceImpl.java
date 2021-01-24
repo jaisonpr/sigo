@@ -5,12 +5,8 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 import br.com.indtexbr.backend.gestaonormas.entity.Norma;
 import br.com.indtexbr.backend.gestaonormas.repository.NormaRepository;
@@ -40,13 +36,9 @@ public class NormaServiceImpl implements NormaService {
 	@Override
 	public List<NormaDTO> listarNormas() {
 		log.info("NormaServiceImpl.listarNormas ({})");
-
-		List<Norma> normas = repository.findAll();
-
-		List<NormaDTO> responseDTOs = normas.stream()
-				.map(standardEntity -> modelMapper.map(standardEntity, NormaDTO.class))
+		List<NormaDTO> responseDTOs = repository.findAll().stream()
+				.map(entity -> modelMapper.map(entity, NormaDTO.class))
 					.collect(Collectors.toList());
-
 		return responseDTOs;
 	}
 
@@ -81,11 +73,13 @@ public class NormaServiceImpl implements NormaService {
 
 	@Override
 	public int obterQuantidadeDesatualizadas() {
+		log.info("NormaServiceImpl.obterQuantidadeDesatualizadas ");
 		return repository.countByAtualizadaFalse();
 	}
 
 	@Override
 	public int obterQuantidadeInativas() {
+		log.info("NormaServiceImpl.obterQuantidadeInativas ");
 		return repository.countByAtivaFalse();
 	}
 }

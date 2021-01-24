@@ -6,16 +6,16 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import io.spring.guides.gs_producing_web_service.Contrato;
-import io.spring.guides.gs_producing_web_service.GetAllContratosRequest;
-import io.spring.guides.gs_producing_web_service.GetAllContratosResponse;
-import io.spring.guides.gs_producing_web_service.GetContratoRequest;
-import io.spring.guides.gs_producing_web_service.GetContratoResponse;
+import erp_mock.web_service.Contrato;
+import erp_mock.web_service.GetAllContratosRequest;
+import erp_mock.web_service.GetAllContratosResponse;
+import erp_mock.web_service.GetContratoRequest;
+import erp_mock.web_service.GetContratoResponse;
 
 @Endpoint
 public class ContratoEndpoint {
 
-	private static final String NAMESPACE_URI = "http://spring.io/guides/gs-producing-web-service";
+	private static final String NAMESPACE_URI = "http://erp-mock/web-service";
 	
 	private ContratosRepository repository;
 	
@@ -28,7 +28,7 @@ public class ContratoEndpoint {
 	@ResponsePayload
 	public GetContratoResponse getContrato(@RequestPayload GetContratoRequest request) {
 		GetContratoResponse response = new GetContratoResponse();
-		response.setContrato(repository.findContrato(request.getId()));
+		response.setContrato(repository.findContrato( request.getId()));
 
 		return response;
 	}

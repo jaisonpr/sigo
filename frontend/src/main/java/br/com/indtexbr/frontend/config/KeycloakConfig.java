@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class KeycloakConfig {
 
 	/**
-	 * Load Keycloak configuration from application.properties, rather than keycloak.json.
+	 * Carrega a configuração do Keycloak apartir do application.properties.
 	 */
 	@Bean
 	public KeycloakSpringBootConfigResolver keycloakConfigResolver() {

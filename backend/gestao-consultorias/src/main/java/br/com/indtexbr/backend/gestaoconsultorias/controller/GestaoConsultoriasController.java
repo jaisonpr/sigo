@@ -23,6 +23,13 @@ import br.com.indtexbr.backend.gestaoconsultorias.service.ConsultoriaService;
 import br.com.indtexbr.backend.gestaoconsultorias.service.ContratosService;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+* Define os mapeamentos das URIs
+*
+* @author  jaisonpr
+* @version 1.0
+* @since   2021-01-24 
+*/
 @Slf4j
 @RestController
 @RequestMapping("/gestao-consultorias/v1/consultorias")

@@ -12,6 +12,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ContratosClient extends WebServiceGatewaySupport {
 
+	/**
+	* Carrega um Contrato SOAP do ERP-Mock apartir do id
+	*
+	* @author  jaisonpr
+	* @version 1.0
+	* @since   2021-01-24 
+	*/
 	public GetContratoResponse getContrato(Integer id) {
 
 		GetContratoRequest request = new GetContratoRequest();
@@ -26,6 +33,14 @@ public class ContratosClient extends WebServiceGatewaySupport {
 		return response;
 	}
 
+
+	/**
+	* Lista todos os Contratos SOAP do ERP-Mock
+	*
+	* @author  jaisonpr
+	* @version 1.0
+	* @since   2021-01-24 
+	*/
 	public GetAllContratosResponse getAllContratos() {
 		log.info("getAllContratos ");
 

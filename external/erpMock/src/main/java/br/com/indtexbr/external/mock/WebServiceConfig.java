@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("ContratosPort");
 		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
+		wsdl11Definition.setTargetNamespace("http://erp-mock/web-service");
 		wsdl11Definition.setSchema(contratosSchema);
 		return wsdl11Definition;
 	}

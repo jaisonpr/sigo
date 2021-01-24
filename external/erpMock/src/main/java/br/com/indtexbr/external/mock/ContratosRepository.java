@@ -10,8 +10,9 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import io.spring.guides.gs_producing_web_service.Areas;
-import io.spring.guides.gs_producing_web_service.Contrato;
+import erp_mock.web_service.Areas;
+import erp_mock.web_service.Contrato;
+
 
 @Component
 public class ContratosRepository {
