@@ -42,7 +42,7 @@
 					            <td>	
 					            	<a th:href="@{/gestao-consultorias/visualizar/(id=${consultoria.id})}" class="btn btn-info"  data-toggle="tooltip" data-placement="top" title="Visualizar os dados da Consultoria"><i class="far fa-eye"></i></a>
 					            	<a th:href="@{/gestao-consultorias/atualizar/(id=${consultoria.id})}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Alterar os dados da Consultoria"><i class="fas fa-edit"></i></a>
-					            	<a th:href="@{/gestao-consultorias/remover/(id=${consultoria.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir a Consultoria"><i class="far fa-trash-alt"></i></a>
+					            	<a th:href="@{/gestao-consultorias/remover/(id=${consultoria.id})}" onclick="return confirm('Confirma exclusão?');" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir a Consultoria"><i class="far fa-trash-alt"></i></a>
 					            </td>
 							</tr>
 						</tbody>

@@ -48,7 +48,7 @@
 					            	<a th:if="${not norma.ativa}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="A Norma INATIVA no Catálogo de Normas"><i class="fas fa-bolt"></i></a>
 					            	<a th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Visualizar os dados da Norma"><i class="far fa-eye"></i></a>
 					            	<a th:href="@{/gestao-normas/atualizar/(id=${norma.id})}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Alterar os dados da Norma"><i class="fas fa-edit"></i></a>
-					            	<a th:href="@{/gestao-normas/remover/(id=${norma.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir a Norma"><i class="far fa-trash-alt"></i></a>
+					            	<a th:href="@{/gestao-normas/remover/(id=${norma.id})}" onclick="return confirm('Confirma exclusão?');" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir a Norma"><i class="far fa-trash-alt"></i></a>
 					            </td>
 							</tr>
 						</tbody>
