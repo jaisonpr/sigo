@@ -43,11 +43,11 @@
 								<td th:text="${norma.numero}" />
 								<td th:text="${norma.versao}" />
 					            <td>		
-					            	<a th:if="${not norma.atualizada}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-primary"><i class="fas fa-bolt"></i></a>		            	
-					            	<a th:if="${not norma.atualizada}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-danger"><i class="fas fa-bolt"></i></a>
-					            	<a th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-info"><i class="far fa-eye"></i></a>
-					            	<a th:href="@{/gestao-normas/atualizar/(id=${norma.id})}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-					            	<a th:href="@{/gestao-normas/remover/(id=${norma.id})}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+					            	<a th:if="${not norma.atualizada}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="A Norma está DESATUALIZADA com relação ao Catálogo"><i class="fas fa-bolt"></i></a>		            	
+					            	<a th:if="${not norma.ativa}" th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="A Norma está INATIVA no Catálogo"><i class="fas fa-bolt"></i></a>
+					            	<a th:href="@{/gestao-normas/visualizar/(id=${norma.id})}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Visualizar os dados da Norma"><i class="far fa-eye"></i></a>
+					            	<a th:href="@{/gestao-normas/atualizar/(id=${norma.id})}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Alterar os dados da Norma"><i class="fas fa-edit"></i></a>
+					            	<a th:href="@{/gestao-normas/remover/(id=${norma.id})}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Excluir a Norma"><i class="far fa-trash-alt"></i></a>
 					            </td>
 							</tr>
 						</tbody>

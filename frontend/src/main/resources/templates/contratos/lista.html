@@ -41,9 +41,9 @@
 								<td th:text="${contrato.consultoria}" />
 								<td th:text="${contrato.normasFormatado}" />
 					            <td>
-					            	<a th:href="@{/gestao-contratos/visualizar/(id=${contrato.id})}" class="btn btn-info"><i class="far fa-eye"></i></a>	
-					            	<a th:if="${ contrato.consultoria == null}" th:href="@{/gestao-contratos/associar/(id=${contrato.id})}" class="btn btn-primary"><i class="far fa-file-alt"></i></a>
-					            	<a th:if="${ contrato.consultoria != null}" th:href="@{/gestao-contratos/associar/(id=${contrato.id})}" class="btn btn-success"><i class="fas fa-edit"></i></a>					            	 
+					            	<a th:href="@{/gestao-contratos/visualizar/(id=${contrato.id})}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Visualizar os dados do Contrato"><i class="far fa-eye"></i></a>	
+					            	<a th:if="${ contrato.consultoria == null}" th:href="@{/gestao-contratos/associar/(id=${contrato.id})}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Associar o Contrato"><i class="far fa-file-alt"></i></a>
+					            	<a th:if="${ contrato.consultoria != null}" th:href="@{/gestao-contratos/associar/(id=${contrato.id})}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Alterar as associações do Contrato"><i class="fas fa-edit"></i></a>					            	 
 					            </td>
 							</tr>
 						</tbody>
