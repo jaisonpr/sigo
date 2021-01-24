@@ -43,10 +43,8 @@ public class FrontendController {
     public String homePage(Model model) {	
 		log.info("FrontendController.homePage");		
         String firstname = WebHelper.getAccessToken(request).getGivenName();		
-		model.addAttribute("nomeUsuario", firstname);
-		
-		this.verficarStatus(model);
-		
+		model.addAttribute("nomeUsuario", firstname);		
+		this.verficarStatus(model);		
         return "home";
     }
 	
@@ -91,7 +89,6 @@ public class FrontendController {
 			model.addAttribute("contratosNovos", (qtdNovos > 1 ? "Existem "+qtdNovos+" Contratos sem associações": "Existe 1 Contrato sem associação"));
 		} else {
 			model.addAttribute("contratosNovos", null);			
-		}
-		
+		}		
 	}	
 }

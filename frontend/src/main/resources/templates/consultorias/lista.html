@@ -16,6 +16,7 @@
 		<div th:if="${errorMessage}" th:utext="${errorMessage}" class="alert alert-danger" role="alert" />
 		<div th:if="${alertMessage}" th:utext="${alertMessage}" class="alert alert-warning" role="alert" />
 		<div th:if="${successMessage}" th:utext="${successMessage}" class="alert alert-success" role="alert" />
+		<div th:if="${infoMessage}" th:utext="${infoMessage}" class="alert alert-dark" role="alert" />
 
 		<div class="row ">
 			<div class="col-12">
@@ -24,7 +25,7 @@
 		</div>
        	<div class="row  row-content">
             <div class="col-12">
-				<div class="table-responsive-lg" th:if="${not #lists.isEmpty(consultorias)}">
+				<div class="table-responsive-lg" >
 
 					<table class="table table-striped ">
 	 						<thead>
@@ -34,7 +35,7 @@
 								<th scope="col">Ações</th>
 							</tr>
 	 						</thead>
-	 						<tbody>
+	 						<tbody th:if="${not #lists.isEmpty(consultorias)}">
 							<tr th:each="consultoria : ${consultorias}">
 								<td th:text="${consultoria.nome}" />
 								<td th:text="${consultoria.area}" />

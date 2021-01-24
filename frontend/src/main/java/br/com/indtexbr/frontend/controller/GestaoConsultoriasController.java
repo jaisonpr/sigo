@@ -107,6 +107,9 @@ public class GestaoConsultoriasController {
 		List<ConsultoriaDTO> array = mapper.convertValue(rp.getBody(), new TypeReference<List<ConsultoriaDTO>>(){});
 		
 		model.addAttribute("consultorias", array);
+		if (array.size() == 0) {
+			model.addAttribute("infoMessage", "Não exitem Consultorias cadastradas");
+		}
 
 		return "consultorias/lista";
 	}
