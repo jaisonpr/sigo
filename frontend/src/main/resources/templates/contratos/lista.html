@@ -24,7 +24,7 @@
 		</div>
        	<div class="row  row-content">
             <div class="col-12">
-				<div class="table-responsive-lg" th:if="${not #lists.isEmpty(consultorias)}">
+				<div class="table-responsive-lg" th:if="${not #lists.isEmpty(contratos)}">
 
 					<table class="table table-striped ">
 	 						<thead>
@@ -37,12 +37,13 @@
 	 						</thead>
 	 						<tbody>
 							<tr th:each="contrato : ${contratos}">
-								<td th:text="${contrato.id}" />
+								<td th:text="${contrato.idContratoExterno}" />
 								<td th:text="${contrato.consultoria}" />
 								<td th:text="${contrato.normasFormatado}" />
-					            <td>	
-					            	<a th:href="@{/gestao-consultorias/visualizar/(id=${contrato.id})}" class="btn btn-info"><i class="far fa-eye"></i></a>
-					            	<a th:href="@{/gestao-consultorias/atualizar/(id=${ccontrato.id})}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+					            <td>
+					            	<a th:href="@{/gestao-contratos/visualizar/(id=${contrato.id})}" class="btn btn-info"><i class="far fa-eye"></i></a>	
+					            	<a th:if="${ contrato.consultoria == null}" th:href="@{/gestao-contratos/associar/(id=${contrato.id})}" class="btn btn-primary"><i class="far fa-file-alt"></i></a>
+					            	<a th:if="${ contrato.consultoria != null}" th:href="@{/gestao-contratos/associar/(id=${contrato.id})}" class="btn btn-success"><i class="fas fa-edit"></i></a>					            	 
 					            </td>
 							</tr>
 						</tbody>

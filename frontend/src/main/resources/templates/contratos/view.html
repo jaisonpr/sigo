@@ -24,21 +24,28 @@
 		</div>
        	<div class="row  row-content">
             <div class="col-12 ">
-            	<form action="#" th:object="${consultoria}" >                        
+            	<form action="#" th:object="${contrato}" >                        
                                                    
                     <div class="form-group row">
-                    	<span class="col-md-2">Nome</span>
-						<span class="col-md-10" th:text="*{nome}"></span>
+                    	<span class="col-md-2">Identificação</span>
+						<span class="col-md-10" th:text="*{idContratoExterno}"></span>
                     </div>                        
                     <div class="form-group row">
-                    	<span class="col-md-2">Área</span>
-						<span class="col-md-10" th:text="*{area}"></span>
-                    </div>          
+                    	<span class="col-md-2">Consultoria</span>
+						<span class="col-md-10" th:text="*{consultoria}"></span>
+                    </div>                              
+                    <div class="form-group row">
+                    	<span class="col-md-2">Normas</span>
+						<span class="col-md-10" th:text="*{normasFormatado}"></span>
+                    </div>                            
+                    <div class="form-group row">
+                    	<span class="col-md-2">Texto</span>
+						<span class="col-md-10" th:text="*{texto}"></span>
+                    </div>   
 
                     <div class="form-group row">
                         <div class="offset-md-2 col-md-10">
-                           <a th:href="@{/gestao-consultorias/}" class="btn btn-primary"><i class="fas fa-arrow-circle-left"> Voltar</i></a>
-                            
+                           <a th:href="@{/gestao-contratos/}" class="btn btn-secondary"><i class="fas fa-arrow-circle-left"> Voltar</i></a>                            
                         </div>
                     </div>
                  </form>             

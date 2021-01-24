@@ -86,11 +86,22 @@ public class GestaoConsultoriasController {
 		log.info("GestaoContratosController.adicionarContrato ({})", contratoDTO);	
         return ResponseEntity.status(HttpStatus.CREATED).body( contratoService.criarContrato(contratoDTO));
 	}
+    
+	@PutMapping(value = "/contratos/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ContratoDTO> alterarContrato(@PathVariable Integer id,@RequestBody @Valid ContratoDTO contratoDTO) {
+		log.info("GestaoContratosController.alterarContrato ({} {})", id, contratoDTO);	
+        return ResponseEntity.status(HttpStatus.OK).body( contratoService.alterarContrato(contratoDTO));
+	}
 	
-
 	@GetMapping(value = "/contratos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<ContratoDTO>> getContratos() {
 		log.info("GestaoContratosController.getContratos");    
         return ResponseEntity.status(HttpStatus.OK).body( contratoService.listarContratos());
+	}
+
+	@GetMapping(value = "/contratos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ContratoDTO> getContrato(@PathVariable Integer id) {
+		log.info("GestaoContratosController.getContratos");    
+        return ResponseEntity.status(HttpStatus.OK).body( contratoService.obterContrato(id));
 	}
 }

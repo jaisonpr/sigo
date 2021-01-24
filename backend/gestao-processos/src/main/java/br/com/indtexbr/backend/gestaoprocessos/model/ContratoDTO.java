@@ -15,4 +15,6 @@ public class ContratoDTO {
     private Integer idConsultoria;
     private Integer idContratoExterno;
     private Set<Integer> normas;
+    private String texto;
+    private String area;
 }

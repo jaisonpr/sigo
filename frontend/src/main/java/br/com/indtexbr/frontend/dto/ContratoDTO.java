@@ -1,6 +1,6 @@
 package br.com.indtexbr.frontend.dto;
 
-import java.util.List;
+import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,17 +12,12 @@ import lombok.NoArgsConstructor;
 public class ContratoDTO {
 
 	private Integer id;
-    private Integer idContrato;
-	private String texto;
-	private String area;
-	private String consultoria;
-	private String normasFormatado;
+    private Integer idConsultoria;
+    private Integer idContratoExterno;
+    private Set<Integer> normas;
+    private String texto;
+    private String area;
 	//
-	private List<Consultoria> consultorias;
-	private List<String> normas;
-}
-
-class Consultoria {
-	Integer id;
-	String nome;
+    private String consultoria;
+    private String normasFormatado;
 }

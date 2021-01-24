@@ -37,6 +37,13 @@ public class AtualizacaoContratosTask {
 	@Value("${auth.server.url}")
 	private String URL_AUTH;
 
+	/**
+	* Retorna os contratos no servidor ERP-SOAP e os envia para o servidor de Gestão de Consultorias - REST
+	*
+	* @author  jaisonpr
+	* @version 1.0
+	* @since   2021-01-24 
+	*/
 	@Autowired ContratosClient contratosClient;
 	@Scheduled(fixedDelayString = "${task.contrato.fixedDelay.in.milliseconds}")
 	public void verifcarListaContratos() {
@@ -45,29 +52,34 @@ public class AtualizacaoContratosTask {
 		GetAllContratosResponse response = contratosClient.getAllContratos(); 
 		
 		List<Contrato> contratos = response.getContratos();
-		
-		System.out.println("--> "+contratos.size());
-
-				
+						
 		for (Contrato contratoSOAP: contratos) {
 			log.info("AtualizacaoContratosTask.verifcarListaContratos : contratoSOAP ({})", contratoSOAP);
+			
 			//chamar o gestao-consultorias
 			ContratoDTO contratoDTO = getContratoDTO( contratoSOAP.getId());
+			
 			//verificar o id do contrato
 			if (contratoDTO == null) {
 				log.info("AtualizacaoContratosTask.verifcarListaContratos : 'salvar contrato'", contratoSOAP);
-				//salvar contrato
+				
 				contratoDTO = new ContratoDTO();
-				contratoDTO.setIdContratoExterno( contratoSOAP.getId());
-				/*
-				 * contratoDTO.setTexto( contratoSOAP.getTexto()); contratoDTO.setArea(
-				 * contratoSOAP.getArea().value());
-				 */
+				contratoDTO.setIdContratoExterno( contratoSOAP.getId());				
+				contratoDTO.setTexto( contratoSOAP.getTexto()); 
+				contratoDTO.setArea( contratoSOAP.getArea().value());
+				 
 				enviarContrato(contratoDTO);
 			}
 		}
 	}
 	
+	/**
+	* Envia para o servidor de Gestão de Consultorias - REST
+	*
+	* @author  jaisonpr
+	* @version 1.0
+	* @since   2021-01-24 
+	*/
 	private void enviarContrato(ContratoDTO contratoDTO) {
 		log.info("AtualizacaoContratosTask.enviarContrato ({})", contratoDTO);
 		try {

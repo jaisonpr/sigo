@@ -28,20 +28,40 @@
                 <form action="#" th:action="@{/gestao-contratos/cadastrar}" th:object="${contrato}" method="post">
                     
                    <input type="hidden" th:field="*{id}" id="id" />
+                   <input type="hidden" th:field="*{idContratoExterno}" id="idContratoExterno" />
+                   <input type="hidden" th:field="*{area}" id="area" />
+                   <input type="hidden" th:field="*{texto}" id="texto" />
                     
                     <div class="form-group row">
                         <label for="firstname" class="col-md-2 col-form-label">Consultoria</label>
                         <div class="col-md-10">
-							<select class="form-control" th:field="*{consultoria}">                            	
-    							<option th:each="consultoria : ${consultorias}" th:value="${consultoria.id}" th:text="${consultoria.nome}" ></option>
-                            </select>                          
-
+							<select class="form-control" th:field="*{idConsultoria}">                            	
+    							<option 
+    								th:each="consultoria : ${listaConsultorias}" 
+    								th:value="${consultoria.id}" 
+    								th:text="${consultoria.nome}" >
+    							</option>
+                            </select>       
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label for="firstname" class="col-md-2 col-form-label">Normas</label>
+                        <div class="col-md-10">
+							<select class="form-control" th:field="*{normas}" multiple="multiple">                            	
+    							<option 
+    								th:each="norma : ${listaNormas}" 
+    								th:value="${norma.id}" 
+    								th:text="${norma.orgao} + ${norma.numero}" >
+    							</option>
+                            </select>       
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="offset-md-2 col-md-10">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"> Salvar</i></button>
+                        	<a th:href="@{/gestao-contratos/}" class="btn btn-secondary"><i class="fas fa-arrow-circle-left"> Voltar</i></a> 
+                        	<button type="submit" class="btn btn-primary"><i class="fas fa-save"> Salvar</i></button>                                             
                         </div>
                     </div>
                     
