@@ -1,4 +1,4 @@
-package br.com.indtexbr.backend.gestaoprocessos.model;
+package br.com.indtexbr.backend.gestaoprocessos.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

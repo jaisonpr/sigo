@@ -24,8 +24,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import br.com.indtexbr.backend.gestaoprocessos.model.NormaDTO;
-import br.com.indtexbr.backend.gestaoprocessos.model.NormaMock;
+import br.com.indtexbr.backend.gestaoprocessos.pojo.NormaDTO;
+import br.com.indtexbr.backend.gestaoprocessos.pojo.NormaMock;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

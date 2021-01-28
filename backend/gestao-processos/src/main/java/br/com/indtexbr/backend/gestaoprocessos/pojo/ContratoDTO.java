@@ -1,4 +1,4 @@
-package br.com.indtexbr.backend.gestaoprocessos.model;
+package br.com.indtexbr.backend.gestaoprocessos.pojo;
 
 import java.util.Set;
 

@@ -24,7 +24,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import br.com.indtexbr.backend.gestaoprocessos.consumingwebservice.ContratosClient;
 import br.com.indtexbr.backend.gestaoprocessos.consumingwebservice.wsdl.Contrato;
 import br.com.indtexbr.backend.gestaoprocessos.consumingwebservice.wsdl.GetAllContratosResponse;
-import br.com.indtexbr.backend.gestaoprocessos.model.ContratoDTO;
+import br.com.indtexbr.backend.gestaoprocessos.pojo.ContratoDTO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
