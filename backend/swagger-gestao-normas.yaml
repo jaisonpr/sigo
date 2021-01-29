@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  description: APIs do módulo de Gesão de Normas
+  description: APIs do módulo de Gestão de Normas
   version: '1.0'
-  title: SIGO - API Gesão de Normas
+  title: SIGO - API Gestão de Normas
   termsOfService: 'urn:tos'
   contact:
     name: JaisonPR
@@ -28,15 +28,15 @@ paths:
     get:
       tags:
         - basic-error-controller
-      summary: error
-      operationId: errorUsingGET
+      summary: errorHtml
+      operationId: errorHtmlUsingGET
+      produces:
+        - text/html
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ModelAndView'
         '401':
           description: Unauthorized
         '403':
@@ -47,15 +47,15 @@ paths:
     head:
       tags:
         - basic-error-controller
-      summary: error
-      operationId: errorUsingHEAD
+      summary: errorHtml
+      operationId: errorHtmlUsingHEAD
+      produces:
+        - text/html
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ModelAndView'
         '204':
           description: No Content
         '401':
@@ -66,15 +66,15 @@ paths:
     post:
       tags:
         - basic-error-controller
-      summary: error
-      operationId: errorUsingPOST
+      summary: errorHtml
+      operationId: errorHtmlUsingPOST
+      produces:
+        - text/html
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ModelAndView'
         '201':
           description: Created
         '401':
@@ -87,15 +87,15 @@ paths:
     put:
       tags:
         - basic-error-controller
-      summary: error
-      operationId: errorUsingPUT
+      summary: errorHtml
+      operationId: errorHtmlUsingPUT
+      produces:
+        - text/html
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ModelAndView'
         '201':
           description: Created
         '401':
@@ -108,15 +108,15 @@ paths:
     delete:
       tags:
         - basic-error-controller
-      summary: error
-      operationId: errorUsingDELETE
+      summary: errorHtml
+      operationId: errorHtmlUsingDELETE
+      produces:
+        - text/html
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ModelAndView'
         '204':
           description: No Content
         '401':
@@ -127,15 +127,15 @@ paths:
     options:
       tags:
         - basic-error-controller
-      summary: error
-      operationId: errorUsingOPTIONS
+      summary: errorHtml
+      operationId: errorHtmlUsingOPTIONS
+      produces:
+        - text/html
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ModelAndView'
         '204':
           description: No Content
         '401':
@@ -146,15 +146,15 @@ paths:
     patch:
       tags:
         - basic-error-controller
-      summary: error
-      operationId: errorUsingPATCH
+      summary: errorHtml
+      operationId: errorHtmlUsingPATCH
+      produces:
+        - text/html
       responses:
         '200':
           description: OK
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ModelAndView'
         '204':
           description: No Content
         '401':
