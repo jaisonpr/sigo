@@ -1,11 +1,15 @@
 package br.com.indtexbr.backend.gestaoprocessos.consumingwebservice;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 @Configuration
 public class ContratoConfiguration {
+	
+	@Value("${api.soap.endpoint.erp.mock}")
+	private String URL_EXTERNO;
 	
 	/**
 	* É responsável por controlar o processo de serialização do WSDL
@@ -31,7 +35,7 @@ public class ContratoConfiguration {
 	@Bean
 	public ContratosClient contratoClient(Jaxb2Marshaller marshaller) {
 		ContratosClient client = new ContratosClient();
-		client.setDefaultUri("http://localhost:9000/ws");
+		client.setDefaultUri(URL_EXTERNO);
 		client.setMarshaller(marshaller);
 		client.setUnmarshaller(marshaller);
 		return client;

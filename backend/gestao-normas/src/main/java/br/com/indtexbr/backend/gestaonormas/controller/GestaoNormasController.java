@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.indtexbr.backend.gestaonormas.dto.NormaDTO;
 import br.com.indtexbr.backend.gestaonormas.service.NormaService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -38,6 +41,9 @@ public class GestaoNormasController {
     @Autowired
     private NormaService normaService;
 
+    @ApiOperation(value = "Retorna todas as normas cadastradas", response = NormaDTO.class, responseContainer = "List")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<NormaDTO>> getNormas() {
 		log.info("GestaoNormasController.getNormas");        
@@ -45,18 +51,27 @@ public class GestaoNormasController {
         return ResponseEntity.status(HttpStatus.OK).body(normas);
 	}
 
+    @ApiOperation(value = "Adiciona uma norma no sistema", response = NormaDTO.class, responseContainer = "List")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<NormaDTO> addNorma(@RequestBody @Valid NormaDTO normaDTO) {
 		log.info("GestaoNormasController.adicionarNorma ({})", normaDTO);	
         return ResponseEntity.status(HttpStatus.CREATED).body( normaService.criarNorma(normaDTO));
 	}
-	
+
+    @ApiOperation(value = "Retorna uma norma específica a partir do ID", response = NormaDTO.class, responseContainer = "List")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<NormaDTO> getNorma(@PathVariable Integer id) {
 		log.info("GestaoNormasController.getNormas");    
         return ResponseEntity.status(HttpStatus.OK).body( normaService.obterNorma(id));
 	}
-	
+
+    @ApiOperation(value = "Retorna a quantidade de normas desatualizadas e/ou inativas", response = NormaDTO.class, responseContainer = "List")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@GetMapping(value = "/status", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<HashMap<String, Integer> > getStatusNormas() {
 		log.info("GestaoNormasController.getStatusNormas");        
@@ -71,7 +86,10 @@ public class GestaoNormasController {
 		
         return ResponseEntity.status(HttpStatus.OK).body(qtds);
 	}
-	
+
+    @ApiOperation(value = "Altera uma norma a partir do JSON e do ID", response = NormaDTO.class, responseContainer = "List")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
     public ResponseEntity<NormaDTO> updateNorma(@PathVariable Integer id, @RequestBody @Valid NormaDTO normaDTO) {
 		log.info("GestaoNormasController.updateNorma ({})");  
@@ -79,6 +97,9 @@ public class GestaoNormasController {
         return ResponseEntity.status(HttpStatus.OK).body( normaService.alterarNorma(normaDTO));
     }
 
+    @ApiOperation(value = "Apaga uma norma específica a partir do ID", response = NormaDTO.class, responseContainer = "List")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)    
     public ResponseEntity<NormaDTO> deleteNorma(@PathVariable Integer id) {
 		log.info("GestaoNormasController.deleteNorma ({})", id);        

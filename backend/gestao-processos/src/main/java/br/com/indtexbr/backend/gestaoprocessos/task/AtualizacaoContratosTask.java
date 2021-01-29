@@ -90,7 +90,7 @@ public class AtualizacaoContratosTask {
 			
 			HttpEntity<String> entity = new HttpEntity<>(json, getHeaderAccessToken());
 			
-			ResponseEntity<String> rp = restTemplate.exchange(URL_GESTAO_CONTRATOS, HttpMethod.POST, entity, String.class);			
+			restTemplate.exchange(URL_GESTAO_CONTRATOS, HttpMethod.POST, entity, String.class);			
 			
 		} catch (IOException e) {
 			log.error(e.getMessage(), e);
@@ -123,12 +123,9 @@ public class AtualizacaoContratosTask {
 			ObjectMapper mapper = new ObjectMapper();
 			dto = mapper.readValue( rp.getBody(), ContratoDTO.class);
 			
-			System.out.println("--->" + dto);
-			
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}	
-		System.out.println("--->" + dto);
 		return dto;
 	}
 	

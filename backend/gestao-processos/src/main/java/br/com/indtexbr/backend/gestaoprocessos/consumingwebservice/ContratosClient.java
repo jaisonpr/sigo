@@ -1,5 +1,6 @@
 package br.com.indtexbr.backend.gestaoprocessos.consumingwebservice;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
@@ -12,6 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ContratosClient extends WebServiceGatewaySupport {
 
+	@Value("${api.soap.endpoint.contratos.mock}")
+	private String URL_EXTERNO;
+	
 	/**
 	* Carrega um Contrato SOAP do ERP-Mock apartir do id
 	*
@@ -27,8 +31,8 @@ public class ContratosClient extends WebServiceGatewaySupport {
 		log.info("Requesting location for " + id);
 
 		GetContratoResponse response = (GetContratoResponse) getWebServiceTemplate().marshalSendAndReceive(
-				"http://localhost:9000/ws/contratos", request,
-				new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/GetContratoRequest"));
+				URL_EXTERNO, request,
+				new SoapActionCallback("http://erp-mock/web-service/GetContratoRequest"));
 
 		return response;
 	}
@@ -47,8 +51,8 @@ public class ContratosClient extends WebServiceGatewaySupport {
 		GetAllContratosRequest request = new GetAllContratosRequest();
 
 		GetAllContratosResponse response = (GetAllContratosResponse) getWebServiceTemplate().marshalSendAndReceive(
-				"http://localhost:9000/ws/contratos", request,
-				new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/GetAllContratosRequest"));
+				URL_EXTERNO, request,
+				new SoapActionCallback("http://erp-mock/web-service/GetAllContratosRequest"));
 
 		return response;
 	}

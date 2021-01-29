@@ -64,11 +64,7 @@ public class GestaoConsultoriasController {
 	public String processFormCadastro(@Valid @ModelAttribute("consultoria") ConsultoriaDTO consultoria, BindingResult result,
 			Model model) {
 		log.info("GestaoConsultoriasController.processFormCadastro");
-		/*
-		 * if (result.hasErrors()) { System.out.println("\t--> ERRRORRR"); return
-		 * "add-user"; }
-		 */
-		
+	
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(consultoria);

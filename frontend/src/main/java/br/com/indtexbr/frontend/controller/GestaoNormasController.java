@@ -64,10 +64,7 @@ public class GestaoNormasController {
 	public String processFormCadastro(@Valid @ModelAttribute("norma") NormaDTO norma, BindingResult result,
 			Model model) {
 		log.info("GestaoNormasController.processFormCadastro");
-		/*
-		 * if (result.hasErrors()) { System.out.println("\t--> ERRRORRR"); return
-		 * "add-user"; }
-		 */
+
 		norma.setAtualizada(Boolean.TRUE);
 		norma.setAtiva(Boolean.TRUE);
 
