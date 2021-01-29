@@ -23,7 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-	public static final Contact DEFAULT_CONTACT = new Contact("JaisonPR", "https://github.com/jaisonpr", "-");
+	public static final Contact DEFAULT_CONTACT = new Contact("JaisonPR", "https://github.com/jaisonpr", "");
 	public static final ApiInfo DEFAULT_API_INFO = new ApiInfo(
 			"SIGO - API Gesão de Normas", "APIs do módulo de Gesão de Normas", "1.0",
 			"urn:tos", DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0", Arrays.asList());
