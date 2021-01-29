@@ -25,7 +25,7 @@ public class SwaggerConfig {
 
 	public static final Contact DEFAULT_CONTACT = new Contact("JaisonPR", "https://github.com/jaisonpr", "");
 	public static final ApiInfo DEFAULT_API_INFO = new ApiInfo(
-			"SIGO - API Gesão de Normas", "APIs do módulo de Gesão de Consultorias", "1.0",
+			"SIGO - API Gesão de Normas", "APIs do módulo de Gestão de Consultorias", "1.0",
 			"urn:tos", DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0", Arrays.asList());
 	
 	private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = 
