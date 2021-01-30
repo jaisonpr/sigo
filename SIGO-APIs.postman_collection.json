@@ -1,0 +1,438 @@
+{
+	"info": {
+		"_postman_id": "787734f8-775a-4ed3-8c83-76b3b8b8676e",
+		"name": "SIGO-APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "External",
+			"item": [
+				{
+					"name": "GetNormaMock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "orgao",
+								"value": "ABNT",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "numero",
+								"value": "12984",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/normas/ABNT/12984",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"normas",
+								"ABNT",
+								"12984"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllContratos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEzMjI4OTgsImlhdCI6MTYxMTMyMjU5OCwianRpIjoiYzhjZGE3ZjMtMTY4Mi00NTY2LTkxNzMtZGVjZjk4ZmM1N2RmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6IjU1MzlkZDg2LTkzZjUtNDcwNy1iMjNkLTUyYmY0ZGE2NzZlZiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.TqCyQjrCqctBSw65TJTPguznFkZ_CBUH7P5Mm7L6Fe7nPYIU48et4JxE5aUi7WeQP1LZEK3zbwx_PAxXvAo8rEhSCpN0eUrqoUf56Xz2C-__yjsrhFWWWZxuOzrTh2pbl4dAuy-z2-IoTLrA8xDUvy0RhaYpxFa5RmmTSfQesIT1q0QEfpmmxBcJQ_gd4uOR0m1lZOeov5ZKP9_nybFY_WmhPu8JWQjEg7zGsk-AisJs9gpv8E9D5UlllkXLsHTfzKBG-5Ex9hKk2ObSBofmPm6ZBlQRRKCiznxHrBvsniCwD-DwY5Ocaf9v0OWkxb_aq-_xT04_yiTa8I-yWNDzbA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8092/gestao-processos/v1/contratos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"gestao-processos",
+								"v1",
+								"contratos"
+							]
+						},
+						"description": "Retorna todos os contratos cadastrados no mock"
+					},
+					"response": []
+				}
+			],
+			"description": "APIs de sistemas externos"
+		},
+		{
+			"name": "Gestao-Normas",
+			"item": [
+				{
+					"name": "Adicionar Norma",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEyNTQwNDgsImlhdCI6MTYxMTI1Mzc0OCwianRpIjoiNDgxMDk5MDItMmQ4ZS00YmIxLWJhNWYtNTA4OWFhZTFhNDk5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImU4ODlkZGI3LWU0OWUtNDkxNC04OGU0LTdhZWIwZjdhMDhjOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.DjuEb280l28JkRqDPEnX1O5AoLSiFByrfnNESSWYvViElX4MK4KBol27_wmDT8ThkeysVSXPmZbkoVm4dXs7dIJ4krp-4SIe_E_Y6LI5pJp02BzGHpOKYs2j0CCqbEsZ-pxKizLC9e47NS2Z3O_4UKRrM5c0eoNZ7_pvV2f0Ow6mKuwsLCbIrCX1b5EkBiJCNaG2k2ZviD5pPMLBzOaOGDeE48VKFzCZMcwk73QHwwphr_Vrf7wafZkK851muo0CNLZbtD_BzFvsCLWlIpunXHNk-3oupQ57D46AodXXUC68XbGvISmyZMEF8EUd861QC_5a5-TXPyCy0TjDgtpkgg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Teste\",\n    \"descricao\": \"Teste descricao\",\n    \"orgao\": \"ABNT\",\n    \"numero\": \"12984\",\n    \"versao\": 1,\n    \"atualizada\": \"true\",\n    \"ativa\": \"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Normas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEyNTQwNDgsImlhdCI6MTYxMTI1Mzc0OCwianRpIjoiNDgxMDk5MDItMmQ4ZS00YmIxLWJhNWYtNTA4OWFhZTFhNDk5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImU4ODlkZGI3LWU0OWUtNDkxNC04OGU0LTdhZWIwZjdhMDhjOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.DjuEb280l28JkRqDPEnX1O5AoLSiFByrfnNESSWYvViElX4MK4KBol27_wmDT8ThkeysVSXPmZbkoVm4dXs7dIJ4krp-4SIe_E_Y6LI5pJp02BzGHpOKYs2j0CCqbEsZ-pxKizLC9e47NS2Z3O_4UKRrM5c0eoNZ7_pvV2f0Ow6mKuwsLCbIrCX1b5EkBiJCNaG2k2ZviD5pPMLBzOaOGDeE48VKFzCZMcwk73QHwwphr_Vrf7wafZkK851muo0CNLZbtD_BzFvsCLWlIpunXHNk-3oupQ57D46AodXXUC68XbGvISmyZMEF8EUd861QC_5a5-TXPyCy0TjDgtpkgg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar Norma",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Norma",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEyNTQyMjQsImlhdCI6MTYxMTI1MzkyNCwianRpIjoiZDI2ZDk2MzctM2QyMy00N2NkLWE4MDMtNzllYjAxMGQ4MTZlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImMyOTRhZWYwLTIxMWMtNDc4Mi1hY2RmLTJmYjM0NTkwMjkzMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.I0JYSv7XQUfx2S37R9944E5H1YT99AyD5GZU9lGp8icL5_7_T8uKfdXVQfhzQiwHTyOupKqMYZp1M4r3gHR5EJE6M64FYSSLYZmZ59nW8txLXhJm8dOWo67jgEiUWe7NozuEEruEydNDg18aiCl-xUoJA4eJ9RdisZEDIWrMdJnR8uSOaQafeXiuW0UGbK18dBT1eVzg8HVdqRucV5dHmQ6mePB5VWm56KS28P78k074FVAcyAnFDlgs0Wkx8RC7LaTiCymciRhO-jD6vZKsdX0CB8VBMfq9rZsW644SoEZ7fMyDQEr3d3qHk1YyThxJ8-8NMcaivkr0cWtPDX2grQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Teste 123\",\n    \"descricao\": \"Teste descricao\",\n    \"orgao\": \"ABNT\",\n    \"numero\": \"12984\",\n    \"link\": null,\n    \"versao\": 1,\n    \"atualizada\": true,\n    \"ativa\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8091/gestao-normas/v1/normas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"gestao-normas",
+								"v1",
+								"normas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "APIs de gestao-normas\n"
+		},
+		{
+			"name": "Gestao-Consultorias",
+			"item": [
+				{
+					"name": "Listar Consultorias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTEyNTQwNDgsImlhdCI6MTYxMTI1Mzc0OCwianRpIjoiNDgxMDk5MDItMmQ4ZS00YmIxLWJhNWYtNTA4OWFhZTFhNDk5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImU4ODlkZGI3LWU0OWUtNDkxNC04OGU0LTdhZWIwZjdhMDhjOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.DjuEb280l28JkRqDPEnX1O5AoLSiFByrfnNESSWYvViElX4MK4KBol27_wmDT8ThkeysVSXPmZbkoVm4dXs7dIJ4krp-4SIe_E_Y6LI5pJp02BzGHpOKYs2j0CCqbEsZ-pxKizLC9e47NS2Z3O_4UKRrM5c0eoNZ7_pvV2f0Ow6mKuwsLCbIrCX1b5EkBiJCNaG2k2ZviD5pPMLBzOaOGDeE48VKFzCZMcwk73QHwwphr_Vrf7wafZkK851muo0CNLZbtD_BzFvsCLWlIpunXHNk-3oupQ57D46AodXXUC68XbGvISmyZMEF8EUd861QC_5a5-TXPyCy0TjDgtpkgg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8093/gestao-consultorias/v1/consultorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8093",
+							"path": [
+								"gestao-consultorias",
+								"v1",
+								"consultorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gestao-Processos",
+			"item": [
+				{
+					"name": "Adicionar Contrato - Origem",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTE0Mjc0NjcsImlhdCI6MTYxMTQyNzE2NywianRpIjoiNjYwNjMyYTMtNTBmMC00ODc3LTgxZGMtYWMyZTJmM2NiNTA4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImVhMDFiMjgyLWVjOTYtNGFlZC1iMWUxLTI0YWQ1OWVhYTc0NyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.me4FKBMIpUYe3dTysBb44WSJpbHXf8ikMho_fPnQdBf3RWx8zAviQ9oYjFuMyelftYc2Qk1OBsxi-JNxrIuMuZ1irbYpwBui7cFlLBtOBAXtld13XV_OYgA1OvzzzrGBPe_3nZDWd4UxNmUKurT0gAZ0L1QNB8LL3ARSUVYUjt1f_usoP7gcdGYQdgvdr_fiTuGAbDsGmSM1eJcejZwvZpGr97uBayize4zArmMrE68TD2KZ7PXKrGhnGB6rxo59uXofnv4urTWoa8s_DyReWj60PsceHzPnyeuU0ZmqU8I2t8ev9e8ro0Jh1N8-LlLZMKHTeP8btMVlK1gg9jWytA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idConsultoria\": 1,\n    \"idContratoExterno\": 1,\n    \"normas\": [1, 2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8093/gestao-consultorias/v1/consultorias/contratos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8093",
+							"path": [
+								"gestao-consultorias",
+								"v1",
+								"consultorias",
+								"contratos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Contrato - Origem",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTE0MjYwNDEsImlhdCI6MTYxMTQyNTc0MSwianRpIjoiNWE1OGZjZWYtMzg2YS00MjkxLTk4OWEtN2M3YTAzZDA2NjFiIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6ImI2YzdhY2M2LTZhYjUtNGE2OS1hZDIyLTAzZmM0Y2M2MTZhZCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.bw4nZOpNBvUQWox1OdVnMda79_YNL-3By4pQ_M-2d7xso357vcLXuBBg_sPKf34p0sdgwzPWflUA12_JzepFad7kZCdoNNE4CilXM1CcDmTuOT4uRauc3SKlfYyWGPiT9c7t2Ex_-Hpnh8eTPlJ4_rW9XMnjBkeJbKpFXcoav5grjL8svH8zTSHBBVLt0liBvvwxNy5rLeIFeJUC8NeUAcQc_FEhuhZ0rpt4CDMnxqhEOKO-pnfbTwFPEmjfTdnv-KZDukEUtkNl34VnNrAfSwcZ_MT__aaqtErTIGxFoN4xQchEs9RgDzvmZMCc03SCqMzSRtBAL4DoyO9Nmb1aAw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8093/gestao-consultorias/v1/consultorias/contratos/origem/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8093",
+							"path": [
+								"gestao-consultorias",
+								"v1",
+								"consultorias",
+								"contratos",
+								"origem",
+								"1"
+							]
+						},
+						"description": "Listar os Contratos do ERP"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Contratos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4aGNpYnowbEg5SlNmajVJWURXaU80WVJ6cG8xUTBPVldoamVYWUFlR0w4In0.eyJleHAiOjE2MTE0MjkwODIsImlhdCI6MTYxMTQyODc4MiwianRpIjoiMWI4NWYxYjEtMzVhNC00M2NkLWExMWYtM2M2ODc1MDVjNmE1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgxL2F1dGgvcmVhbG1zL1NJR08iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTVjOTE1NzItNTE4MS00MTNjLWI4M2QtNTkxMThmZTFiODgxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1nZXN0YW8tbm9ybWFzIiwic2Vzc2lvbl9zdGF0ZSI6IjM5ODYxYTRlLTNkMTAtNDM1NS1iNTE0LWQxODY2Y2Y4YjA5ZCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MDkxIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiR2VzdG9yIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiSm9hbyBTaWx2YSIsInByZWZlcnJlZF91c2VybmFtZSI6Imdlc3RvciIsImdpdmVuX25hbWUiOiJKb2FvIiwiZmFtaWx5X25hbWUiOiJTaWx2YSIsImVtYWlsIjoiZ2VzdG9yLm5vcm1hQHNpZ28uY29tLmJyIn0.RnR5zZTgXmDFeot-JIznnZOcBBRRAWy-jKEVHXg9hFNFLKKWVTNXW3LXpAcKSii-DfJysfja1quqBSk2OxtHweoXFztFLjKlf9bW-MuGRP2EJi0UwXp8qiBFaOlxlbRvosUkTrF-YZuixbyCjBYT3ugBIsIBWW_lj7T67pw-hoUL-WR9wcbVXqXbiTBhaj_czlutuAOooB9tJhKxM_Icsdy8M0hAZrXqZ-Nz3HDr-ZkKWgEf_rLNJTeZgMTtvMr8kWBrKfVLlppsEW8Rb2tHiGyFng-2fzRobDdlylVCv3EVuo08HltbXy6hh16uquPrnUZDwKl9OA9dq6-OhntODw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8093/gestao-consultorias/v1/consultorias/contratos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8093",
+							"path": [
+								"gestao-consultorias",
+								"v1",
+								"consultorias",
+								"contratos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Contrato",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Request an Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "backend-gestao-normas",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "6fd1b103-7e2b-4c77-850f-a4b41161667f",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "gestor",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8181/auth/realms/SIGO/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"auth",
+						"realms",
+						"SIGO",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
