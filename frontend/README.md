@@ -1,23 +1,14 @@
 # SIGO - Front-end
-TCC PUCMinas
+
+O front-end é uma aplicação WEB (Thymeleaf, Bootstrap) desenvolvida completamente separada dos módulos de back-end e comunica-se com eles por APIs REST e JSON. Esta aplicação é executada sob o seu próprio *middleware* Tomcat embutido no Spring boot.
+
+Tecnologias utilizadas:
+* Spring MVC;
+* Spring boot, com Tomcat 
+* Bootstrap 4 para *layout* responsivo
 
 
-template engine: Thymeleaf
+Para iniciar o container: ./start.sh
 
-
-spring boot
-
-Layout responsivo
-bootstrap 4
-
-
-externalizado
-aplication.properties
-api.rest.endpoint
-@Value("${api.rest.endpoint}")
-
-
-
-seguranca
-Keycloak 
-projeto open source desenvolvido e mantido pela RedHat Community.
+obs.:
+Deve ser instalado o *lombok* no Eclipse para evitar erros de compilação (https://stackoverflow.com/questions/45461777/lombok-problems-with-eclipse-oxygen).

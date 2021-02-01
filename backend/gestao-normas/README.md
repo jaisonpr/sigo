@@ -1,10 +1,9 @@
 # SIGO - Back-end - Gestão de Normas
-TCC PUCMinas
 
 
 
 
+Para iniciar o container: ./start.sh
 
-Adicionar 
-Swagger
-@ApiOperation
+obs.:
+Deve ser instalado o *lombok* no Eclipse para evitar erros de compilação (https://stackoverflow.com/questions/45461777/lombok-problems-with-eclipse-oxygen).

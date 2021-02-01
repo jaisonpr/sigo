@@ -45,7 +45,7 @@
 						<h5 class="card-title">Não exitem Contratos sem associações</h5>
 					</div>
 					<div class="card-body" th:if="${contratosNovos != null}"> 
-						<p class="card-text" th:if="${contratosNovos != null}" th:utext="${normasDesatualizadas}"></p>
+						<p class="card-text" th:if="${contratosNovos != null}" th:utext="${contratosNovos}"></p>
 						<p class="card-text" th:if="${contratosNovos == null}">Não exitem Contratos sem associações</p>
 						<a class="btn btn-info" th:if="${contratosNovos == null}" th:href="@{/gestao-contratos/}">Consultar</a>
 					</div>
