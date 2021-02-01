@@ -27,13 +27,13 @@
 					<div class="card-body">
 						<h5 class="card-title" >Normas desatualizadas</h5>
 						<p class="card-text" th:if="${normasDesatualizadas != null}" th:utext="${normasDesatualizadas}"></p>
-						<p class="card-text" th:if="${normasDesatualizadas == null}">Não exitem Normas desatualizadas</p>
+						<p class="card-text" th:if="${normasDesatualizadas == null}">Não existem Normas desatualizadas</p>
 						<a class="btn btn-warning" th:if="${normasDesatualizadas != null}" th:href="@{/gestao-normas/}">Consultar</a>
 					</div>
 					<div class="card-body">
 						<h5 class="card-title">Normas inativas</h5>
 						<p class="card-text" th:if="${normasInativas != null}" th:utext="${normasInativas}"></p>
-						<p class="card-text" th:if="${normasInativas == null}">Não exitem Normas inativas</p>
+						<p class="card-text" th:if="${normasInativas == null}">Não existem Normas inativas</p>
 						<a class="btn btn-danger" th:if="${normasInativas != null}" th:href="@{/gestao-normas/}">Consultar</a>
 					</div>
 				</div>
@@ -42,11 +42,11 @@
 				<div class="card" style="width: 18rem;" >
 					<h5 class="card-header">Contratos</h5>
 					<div class="card-body" th:if="${contratosNovos == null}"> 
-						<h5 class="card-title">Não exitem Contratos sem associações</h5>
+						<h5 class="card-title">Não existem Contratos sem associações</h5>
 					</div>
 					<div class="card-body" th:if="${contratosNovos != null}"> 
 						<p class="card-text" th:if="${contratosNovos != null}" th:utext="${contratosNovos}"></p>
-						<p class="card-text" th:if="${contratosNovos == null}">Não exitem Contratos sem associações</p>
+						<p class="card-text" th:if="${contratosNovos == null}">Não existem Contratos sem associações</p>
 						<a class="btn btn-info" th:if="${contratosNovos == null}" th:href="@{/gestao-contratos/}">Consultar</a>
 					</div>
 				</div>

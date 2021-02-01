@@ -146,7 +146,7 @@ public class GestaoContratosController {
 		}
 		model.addAttribute("contratos", contratos);
 		if (contratos.size() == 0) {
-			model.addAttribute("infoMessage", "Não exitem Contratos cadastrados");
+			model.addAttribute("infoMessage", "Não existem Contratos cadastrados");
 		}
 
 		return "contratos/lista";

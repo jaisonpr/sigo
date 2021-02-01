@@ -114,7 +114,7 @@ public class GestaoNormasController {
 		
 		model.addAttribute("normas", array);
 		if (array.size() == 0) {
-			model.addAttribute("infoMessage", "Não exitem normas cadastradas");
+			model.addAttribute("infoMessage", "Não existem normas cadastradas");
 		}
 
 		return "normas/lista";
