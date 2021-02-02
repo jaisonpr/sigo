@@ -111,7 +111,7 @@ public class GestaoConsultoriasController {
 		
 		model.addAttribute("consultorias", array);
 		if (array.size() == 0) {
-			model.addAttribute("infoMessage", "Não exitem Consultorias cadastradas");
+			model.addAttribute("infoMessage", "Não existem Consultorias cadastradas");
 		}
 
 		return "consultorias/lista";

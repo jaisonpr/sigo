@@ -14,3 +14,5 @@ Projeto responsável por cadastrar as normas internas e externas utilizadas pela
 
 Projeto responsável pela integração entre os outros módulos do sistema e dos sistemas externos. Este verifica o catálogo externo de normas e busca novos copntratos no ERP.
 
+
+Para iniciar com o maven: ./start.sh
